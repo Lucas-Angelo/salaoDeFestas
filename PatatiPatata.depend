@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1589903063 source:d:\documentos\programacao\c\puc\salaodefestas\clienteclass.cpp
+	"ClienteClass.h"
+
+1589904814 d:\documentos\programacao\c\puc\salaodefestas\clienteclass.h
+	<string>
+
+1589905086 source:d:\documentos\programacao\c\puc\salaodefestas\main.cpp
+	<iostream>
+	<string>
+	<time.h>
+	"ClienteClass.h"
+
