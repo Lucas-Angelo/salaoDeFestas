@@ -32,7 +32,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ClienteClass.cpp" />
+		<Unit filename="ClienteClass.h" />
+		<Unit filename="FuncionariosClass.cpp" />
+		<Unit filename="FuncionariosClass.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="munit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="munit.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -1,10 +1,12 @@
 #include <iostream>
+#include <stdio.h>
 #include "munit.h"
 
 using namespace std;
 #include <string>
 #include <time.h>
 #include "ClienteClass.h"
+#include "FuncionariosClass.h"
 
 int main()
 {
@@ -20,6 +22,23 @@ int main()
     cliente.nome = "Lucas Angelo";
     cliente.nome += " Oliveira";
     cliente.salario = 440.50;
+
+    FuncionariosClass funcionarios;
+    funcionarios.codigo=69;
+    funcionarios.nome= "Kid Benguis";
+    funcionarios.salario= 666.00;
+    funcionarios.telefone=553740028922;
+    funcionarios.tipo='t';
+
+
+    printf("Codigo: %i\n", funcionarios.codigo);
+    cout << funcionarios.nome + '\n';
+    printf("Salario: %.2f\n", funcionarios.salario);
+    printf("Telefone: %l", funcionarios.telefone);
+    if(funcionarios.tipo=='t')
+        printf("Funcionario TEMPORARIO\n\n");
+    else
+        printf("Funcionario PERMANENTE\n\n");
 
     // Como funciona as variaveis dentro do objeto:
     printf("%i\n", idade);
