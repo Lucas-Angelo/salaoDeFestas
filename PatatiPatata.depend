@@ -11,3 +11,67 @@
 	<time.h>
 	"ClienteClass.h"
 
+1589921744 source:c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\clienteclass.cpp
+	"ClienteClass.h"
+
+1589921744 c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\clienteclass.h
+	<string>
+
+1590617999 source:c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\main.cpp
+	<iostream>
+	<stdio.h>
+	"munit.h"
+	<string>
+	<time.h>
+	"ClienteClass.h"
+	"FornecedorClass.h"
+
+1589921744 c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\munit.h
+	<stdarg.h>
+	<stdlib.h>
+	<stdint.h>
+	<inttypes.h>
+	<string.h>
+
+1589921744 source:c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\munit.c
+	<stdbool.h>
+	<limits.h>
+	<time.h>
+	<errno.h>
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+	<setjmp.h>
+	<locale.h>
+	<langinfo.h>
+	<strings.h>
+	<unistd.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<windows.h>
+	<io.h>
+	<fcntl.h>
+	"munit.h"
+	"../exact-int/exact-int.h"
+	<assert.h>
+	<limits.h>
+	<unistd.h>
+	<time.h>
+	<time.h>
+	<sys/time.h>
+	<windows.h>
+	<sys/time.h>
+	<sys/resource.h>
+	<CoreServices/CoreServices.h>
+	<mach/mach.h>
+	<mach/mach_time.h>
+	<time.h>
+	<stdatomic.h>
+
+1590617325 source:c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\fornecedorclass.cpp
+	"FornecedorClass.h"
+
+1590618494 c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\fornecedorclass.h
+	<string>
+
