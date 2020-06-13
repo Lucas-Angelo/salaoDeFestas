@@ -40,6 +40,8 @@
 		<Unit filename="ClienteClass.h" />
 		<Unit filename="FornecedorClass.cpp" />
 		<Unit filename="FornecedorClass.h" />
+		<Unit filename="FuncionariosClass.cpp" />
+		<Unit filename="FuncionariosClass.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="munit.c">
 			<Option compilerVar="CC" />
