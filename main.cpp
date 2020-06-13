@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "munit.h"
+#include <locale>
 
 using namespace std;
 #include <string>
@@ -10,6 +11,7 @@ using namespace std;
 
 int main()
 {
+    setlocale(LC_ALL, "Portuguese");
     int idade=0;
     float peso=72.5;
     char sexo = 'B';
@@ -33,7 +35,7 @@ int main()
     printf("Salario: %.2f\n", funcionarios.salario);
     printf("Telefone: %l", funcionarios.telefone);
     if(funcionarios.tipo=='t')
-        printf("Funcionario TEMPORARIO\n\n");
+        printf("Funcionário TEMPORARIO\n\n");
     else
         printf("Funcionario PERMANENTE\n\n");
 
