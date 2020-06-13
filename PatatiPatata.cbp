@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="../salaoDeFestas" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +24,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="../salaoDeFestas" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,7 +36,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ClienteClass.cpp" />
+		<Unit filename="ClienteClass.h" />
+		<Unit filename="FornecedorClass.cpp" />
+		<Unit filename="FornecedorClass.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="munit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="munit.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

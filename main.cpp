@@ -1,13 +1,17 @@
 #include <iostream>
+#include <stdio.h>
 #include "munit.h"
 
 using namespace std;
 #include <string>
 #include <time.h>
 #include "ClienteClass.h"
+#include "FornecedorClass.h"
+
 
 int main()
 {
+
     //Vou dar uns exemplos antes de variavel:
     int idade=0; // Armazena valores inteiros
     float peso=72.5; // Grava valores dos conjuntos dos reais
@@ -44,12 +48,17 @@ int main()
         printf("Qual é o Salario do Cliente: ");
         scanf("%f", &clientes[i].salario);
     }
-
+/*
     for(int i=0;i<4;i++) {
             printf("ID:  %i\n", clientes[i].codigo);
             cout << "Nome do cliente " + clientes[i].nome + '\n';
             printf("Salario: R$%.2f\n\n", clientes[i].salario);
-    }
+    }*/
+
+    /*Teste de Classe de fornecedores*/
+    FornecedorClass fornecedor;
+    cin >> fornecedor.telefone;
+    cout << fornecedor.telefone + '\n';
 
     printf("FIM");
 
