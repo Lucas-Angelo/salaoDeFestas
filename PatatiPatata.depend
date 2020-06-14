@@ -6,7 +6,7 @@
 	<string>
 	<fstream>
 
-1592099037 source:d:\documentos\programacao\c\puc\salaodefestas\main.cpp
+1592105223 source:d:\documentos\programacao\c\puc\salaodefestas\main.cpp
 	<iostream>
 	<stdio.h>
 	"munit.h"
@@ -15,6 +15,7 @@
 	"ClienteClass.h"
 	"FornecedorClass.h"
 	"funcaoCliente.h"
+	"DateHelper.h"
 
 1589921744 source:c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\clienteclass.cpp
 	"ClienteClass.h"
@@ -234,4 +235,11 @@
 1592098767 d:\documentos\programacao\c\puc\salaodefestas\funcionariosclass.h
 	<string>
 	<fstream>
+
+1592101851 source:d:\documentos\programacao\c\puc\salaodefestas\helpers\datehelper.cpp
+	"DateHelper.h"
+
+1592104713 d:\documentos\programacao\c\puc\salaodefestas\helpers\datehelper.h
+	<iostream>
+	<string>
 

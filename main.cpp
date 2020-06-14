@@ -1,14 +1,16 @@
 #include <iostream>
 #include <stdio.h>
 #include "munit.h"
-
-using namespace std;
 #include <string>
 #include <time.h>
 #include "ClienteClass.h"
 #include "FornecedorClass.h"
 #include "funcaoCliente.h"
+#include "DateHelper.h"
+
+using namespace std;
 void printArt();
+
 int main()
 {
     int op=0,cad;
@@ -57,17 +59,17 @@ void printArt(){
     cout << "   _                             .-." << endl;
     cout << "  / )  .-.    ___          __   (   )" << endl;
     cout << " ( (  (   ) .'___)        (__'-._) (" << endl;
-    cout << "  \ '._) (,'.'               '.     '-." << endl;
-    cout << "   '.      /  \"\               '    -. '." << endl;
-    cout << "     )    /   \ \   .-.   ,'.   )  (  ',_)    _" << endl;
-    cout << "   .'    (     \ \ (   \ . .' .'    )    .-. ( \ " << endl;
-    cout << "  (  .''. '.    \ \|  .' .' ,',--, /    (   ) ) )" << endl;
-    cout << "   \ \   ', :    \    .-'  ( (  ( (     _) (,' / " << endl;
-    cout << "    \ \   : :    )  / _     ' .  \ \  ,'      / " << endl;
+    cout << "  \\ '._) (,'.'               '.     '-." << endl;
+    cout << "   '.      /  \"\\               '    -. '." << endl;
+    cout << "     )    /   \\ \\   .-.   ,'.   )  (  ',_)    _" << endl;
+    cout << "   .'    (     \\ \\ (   \ . .' .'    )    .-. ( \ " << endl;
+    cout << "  (  .''. '.    \\ \\|  .' .' ,',--, /    (   ) ) )" << endl;
+    cout << "   \\ \\   ', :    \\    .-'  ( (  ( (     _) (,' / " << endl;
+    cout << "    \\ \\   : :    )  / _     ' .  \ \  ,'      / " << endl;
     cout << "  ,' ,'   : ;   /  /,' '.   /.'  / / ( (\    (" << endl;
     cout << "  '.'      \"   (    .-'. \       ''   \_)\    \ " << endl;
-    cout << "                \  |    \ \__             )    )" << endl;
-    cout << "              ___\ |     \___;           /  , /" << endl;
+    cout << "                \\  |    \ \__             )    )" << endl;
+    cout << "              ___\\ |     \___;           /  , /" << endl;
     cout << "             /  ___)                    (  ( (" << endl;
     cout << "             '.'                         ) ;) ;" << endl;
     cout << "                                        (_/(_/" << endl;
