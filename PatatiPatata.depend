@@ -1,15 +1,22 @@
 # depslib dependency file v1.0
-1589903063 source:d:\documentos\programacao\c\puc\salaodefestas\clienteclass.cpp
+1589905658 source:d:\documentos\programacao\c\puc\salaodefestas\clienteclass.cpp
 	"ClienteClass.h"
 
-1589904814 d:\documentos\programacao\c\puc\salaodefestas\clienteclass.h
+1592094031 d:\documentos\programacao\c\puc\salaodefestas\clienteclass.h
 	<string>
+	<fstream>
 
-1589905086 source:d:\documentos\programacao\c\puc\salaodefestas\main.cpp
+1592095384 source:d:\documentos\programacao\c\puc\salaodefestas\main.cpp
 	<iostream>
+	<stdio.h>
+	"munit.h"
 	<string>
 	<time.h>
 	"ClienteClass.h"
+	"FornecedorClass.h"
+	"FuncionariosClass.h"
+	"FestaClass.h"
+	"ContratoClass.h"
 
 1589921744 source:c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\clienteclass.cpp
 	"ClienteClass.h"
@@ -74,4 +81,74 @@
 
 1590618494 c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\fornecedorclass.h
 	<string>
+
+1592085453 source:d:\documentos\programacao\c\puc\salaodefestas\fornecedorclass.cpp
+	"FornecedorClass.h"
+
+1592094727 d:\documentos\programacao\c\puc\salaodefestas\fornecedorclass.h
+	<string>
+	<fstream>
+
+1589905780 d:\documentos\programacao\c\puc\salaodefestas\munit.h
+	<stdarg.h>
+	<stdlib.h>
+	<stdint.h>
+	<inttypes.h>
+	<string.h>
+
+1589905780 source:d:\documentos\programacao\c\puc\salaodefestas\munit.c
+	<stdbool.h>
+	<limits.h>
+	<time.h>
+	<errno.h>
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+	<setjmp.h>
+	<locale.h>
+	<langinfo.h>
+	<strings.h>
+	<unistd.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<windows.h>
+	<io.h>
+	<fcntl.h>
+	"munit.h"
+	"../exact-int/exact-int.h"
+	<assert.h>
+	<limits.h>
+	<unistd.h>
+	<time.h>
+	<time.h>
+	<sys/time.h>
+	<windows.h>
+	<sys/time.h>
+	<sys/resource.h>
+	<CoreServices/CoreServices.h>
+	<mach/mach.h>
+	<mach/mach_time.h>
+	<time.h>
+	<stdatomic.h>
+
+1592088132 source:d:\documentos\programacao\c\puc\salaodefestas\contratoclass.cpp
+	"ContratoClass.h"
+
+1592095436 d:\documentos\programacao\c\puc\salaodefestas\contratoclass.h
+	<fstream>
+
+1592087218 source:d:\documentos\programacao\c\puc\salaodefestas\festaclass.cpp
+	"FestaClass.h"
+
+1592095228 d:\documentos\programacao\c\puc\salaodefestas\festaclass.h
+	<string>
+	<fstream>
+
+1592085453 source:d:\documentos\programacao\c\puc\salaodefestas\funcionariosclass.cpp
+	"FuncionariosClass.h"
+
+1592094016 d:\documentos\programacao\c\puc\salaodefestas\funcionariosclass.h
+	<string>
+	<fstream>
 

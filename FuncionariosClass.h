@@ -3,6 +3,7 @@
 
 using namespace std;
 #include <string>
+#include <fstream>
 
 class FuncionariosClass
 {
@@ -14,6 +15,12 @@ class FuncionariosClass
         string funcao;
         float salario;
         char tipo;
+        int save() {
+            ofstream file;
+            file.open ("files/funcionario.txt", std::ios_base::app);
+            file << codigo << ";" << nome << ";"  << telefone << ";" << funcao << ";"  << salario << ";"  << tipo << "\n";
+            file.close();
+        }
 };
 
 #endif // FUNCIONARIOSCLASS_H

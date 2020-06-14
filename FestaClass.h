@@ -3,6 +3,7 @@
 
 using namespace std;
 #include <string>
+#include <fstream>
 
 class FestaClass
 {
@@ -12,12 +13,16 @@ class FestaClass
         int qtdConvidados;
         string dt;
         int diaSemana;
-        int hora_inicio;
-        int minuto_inicio;
-        int hora_fim;
-        int minuto_fim;
+        string hora_inicio;
+        string hora_fim;
         string tema;
         int codigo_cliente;
+        int save() {
+            ofstream file;
+            file.open ("files/party.txt", std::ios_base::app);
+            file << codigo << ";" << qtdConvidados << ";"  << dt << ";" << diaSemana  << ";" << hora_inicio  << ";" << hora_fim  << ";" << tema << ";" << codigo_cliente << "\n";
+            file.close();
+        }
 };
 
 #endif // FESTACLASS_H
