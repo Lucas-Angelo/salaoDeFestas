@@ -75,3 +75,78 @@
 1590618494 c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\fornecedorclass.h
 	<string>
 
+1589921926 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\clienteclass.cpp
+	"ClienteClass.h"
+
+1592092773 c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\clienteclass.h
+	<string>
+
+1592085513 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\fornecedorclass.cpp
+	"FornecedorClass.h"
+
+1592085513 c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\fornecedorclass.h
+	<string>
+
+1589921926 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\munit.c
+	<stdbool.h>
+	<limits.h>
+	<time.h>
+	<errno.h>
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+	<setjmp.h>
+	<locale.h>
+	<langinfo.h>
+	<strings.h>
+	<unistd.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<windows.h>
+	<io.h>
+	<fcntl.h>
+	"munit.h"
+	"../exact-int/exact-int.h"
+	<assert.h>
+	<limits.h>
+	<unistd.h>
+	<time.h>
+	<time.h>
+	<sys/time.h>
+	<windows.h>
+	<sys/time.h>
+	<sys/resource.h>
+	<CoreServices/CoreServices.h>
+	<mach/mach.h>
+	<mach/mach_time.h>
+	<time.h>
+	<stdatomic.h>
+
+1589921926 c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\munit.h
+	<stdarg.h>
+	<stdlib.h>
+	<stdint.h>
+	<inttypes.h>
+	<string.h>
+
+1592095379 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\main.cpp
+	<iostream>
+	<stdio.h>
+	"munit.h"
+	<string>
+	<time.h>
+	"ClienteClass.h"
+	"FornecedorClass.h"
+	"funcaoCliente.h"
+
+1592089593 c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\funcaocliente.h
+
+1592095419 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\funcaocliente.cpp
+	<iostream>
+	<stdio.h>
+	"munit.h"
+	<string>
+	<time.h>
+	"ClienteClass.h"
+
