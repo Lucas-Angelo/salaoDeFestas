@@ -78,7 +78,7 @@
 1589921926 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\clienteclass.cpp
 	"ClienteClass.h"
 
-1589921926 c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\clienteclass.h
+1592092773 c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\clienteclass.h
 	<string>
 
 1592085513 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\fornecedorclass.cpp
@@ -130,7 +130,7 @@
 	<inttypes.h>
 	<string.h>
 
-1592085704 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\main.cpp
+1592095379 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\main.cpp
 	<iostream>
 	<stdio.h>
 	"munit.h"
@@ -138,4 +138,15 @@
 	<time.h>
 	"ClienteClass.h"
 	"FornecedorClass.h"
+	"funcaoCliente.h"
+
+1592089593 c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\funcaocliente.h
+
+1592095419 source:c:\users\ayrto\onedrive\documentos\mt\meusprojetos\salaodefestas\funcaocliente.cpp
+	<iostream>
+	<stdio.h>
+	"munit.h"
+	<string>
+	<time.h>
+	"ClienteClass.h"
 
