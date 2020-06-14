@@ -4,12 +4,13 @@
 using namespace std;
 #include <string>
 #include <fstream>
+#include "ModelHelper.h"
 
 // http://prntscr.com/sjryho
 class ClienteClass
 {
     public: ClienteClass();
-        int codigo;
+        int codigo  = NULL;
         string nome;
         string endereco;
         unsigned long telefone;
@@ -20,6 +21,27 @@ class ClienteClass
             file << codigo << ";" << nome << ";" << endereco << ";" << telefone << ";" << dtNascimento << "\n";
             file.close();
         }
+        static ClienteClass get(int cod) {
+            // Abrir o arquivo para leitura
+            ifstream inFile;
+            inFile.open("files/client.txt");
+            int codLength = to_string(cod).length();
+            string line;
+            ClienteClass c;
+            // Ler linha por linha até o fim do arquivo.
+            while (getline(inFile, line)) {
+                // Se encontrar o codigo do cliente, quebrar a linha e definir os atributos da classe
+                if(ModelHelper::split(';', line, 0) ==  to_string(cod)) {
+                    c.codigo = stoi(ModelHelper::split(';',line, 0));
+                    c.nome = ModelHelper::split(';',line, 1);
+                    c.endereco = ModelHelper::split(';',line, 2);
+                    c.telefone = stoi(ModelHelper::split(';',line, 3));
+                    c.dtNascimento = ModelHelper::split(';',line, 4);
+                }
+            }
+            return c;
+        }
+
 };
 
 #endif // CLIENTECLASS_H
