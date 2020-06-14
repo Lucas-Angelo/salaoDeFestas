@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "munit.h"
+#include "funcaoFornecedor.h"
 
 using namespace std;
 #include <string>
@@ -36,7 +37,7 @@ int main()
             //colocar a funcao  funcionario
           break;
           case 3:
-            //colocar a funcao  fornecedor
+            funcaoFornecedor ();
           break;
           case 4:
             //colocar a funcao  festa
