@@ -8,9 +8,9 @@ class FuncionariosClass
 {
     public:
         FuncionariosClass();
-        int codigo;
+        unsigned int codigo;
         string nome;
-        unsigned long telefone;
+        string telefone;
         string funcao;
         float salario;
         char tipo;

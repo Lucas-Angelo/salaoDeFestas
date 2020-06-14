@@ -42,6 +42,8 @@
 		<Unit filename="FornecedorClass.h" />
 		<Unit filename="FuncionariosClass.cpp" />
 		<Unit filename="FuncionariosClass.h" />
+		<Unit filename="funcaoFuncionarios.cpp" />
+		<Unit filename="funcaoFuncionarios.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="munit.c">
 			<Option compilerVar="CC" />

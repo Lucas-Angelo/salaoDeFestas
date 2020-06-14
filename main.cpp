@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "munit.h"
+#include "funcaoFuncionarios.h"
 
 using namespace std;
 #include <string>
@@ -14,6 +15,7 @@ int main()
     {
       printf("Digite uma opcao:\n1-cadastrar\n2-Pesquisar\n3-SAIR\n");
       scanf("%d",&op);
+      cad=0;
       if(op ==1)
       {
         printf("Digite o que gostaria de cadastrar:\n1-cliente\n2-funcionario\n3-fornecedor\n4-festa\n");
@@ -27,7 +29,7 @@ int main()
             //colocar a funcao cliente aqui
           break;
           case 2:
-            //colocar a funcao  funcionario
+            funcaoFuncionarios();
           break;
           case 3:
             //colocar a funcao  fornecedor
