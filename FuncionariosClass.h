@@ -13,7 +13,7 @@ class FuncionariosClass
         string telefone;
         string funcao;
         float salario;
-        string tipo;
+        char tipo;
 };
 
 #endif // FUNCIONARIOSCLASS_H

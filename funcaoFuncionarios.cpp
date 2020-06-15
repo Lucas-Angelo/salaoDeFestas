@@ -14,15 +14,16 @@ string salvarNome();
 string salvarTelefone();
 string salvarFuncao();
 float salvarSalario();
-string salvarTipo();
+char salvarTipo();
 
 
 int funcaoFuncionarios()
 {
-    char confirmar;
     setlocale(LC_ALL,"portuguese"); //
     FuncionariosClass funcionarios;
 
+
+    char confirmar;
     cout << "\n>>> CADASTRAR FUNCIONÁRIO <<<" << endl;
 
     do
@@ -47,9 +48,9 @@ int funcaoFuncionarios()
         cout << "Telefone: " + funcionarios.telefone << endl;
         cout << "Função: " + funcionarios.funcao << endl;
         printf("Salário: %.2f\n", funcionarios.salario);
-        cout << "Tipo: " + funcionarios.tipo + '\n'  << endl;
+        printf("Tipo: %c\n", funcionarios.tipo);
 
-        printf("---> Confirmar dados <---");
+        printf("\n---> Confirmar dados <---");
         printf("\nC - Para confirmar");
         printf("\nR - Para refazer");
         printf("\nOs dados inseridos estão corretos? ");
@@ -128,34 +129,21 @@ float salvarSalario() //Função para pegar o salário do funcionário.
     return salario;
 }
 
-string salvarTipo() //Função para pegar o tipo do funcionário.
+char salvarTipo() //Função para pegar o tipo do funcionário.
 {
-    char opcao;
-    string tipo;
+    char tipo;
     cout << "Menu de opções:";
     cout << "\nT - Para temporário\nF - Para fixo";
     cout << "\nDigite o tipo do funcionário? ";
     do
     {
-        scanf(" %c", &opcao);
-        opcao = toupper(opcao);
-        if(opcao!='T' && opcao!='F')
+        scanf(" %c", &tipo);
+        tipo = toupper(tipo);
+        if(tipo!='T' && tipo!='F')
         {
             cout << "Informe uma opção válida(T ou F): ";
         }
-    } while (opcao!='T' && opcao!='F');
+    } while (tipo!='T' && tipo!='F');
 
-    switch (opcao)
-    {
-        case 'T':
-            tipo = "Temporário";
-            break;
-        case 'F':
-            tipo = "Fixo";
-            break;
-        default:
-            cout << "Erro, por favor tente novamente.\n" << endl;
-            break;
-    }
     return tipo;
 }
