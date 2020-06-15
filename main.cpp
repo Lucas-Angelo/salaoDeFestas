@@ -8,17 +8,26 @@ using namespace std;
 #include <time.h>
 #include "ClienteClass.h"
 #include "FornecedorClass.h"
+#include "funcaoCliente.h"
+
+using namespace std;
+void printArt();
+
 int main()
 {
-    int op=0,cad=0;
+    int op=0,cad;
+    setlocale(LC_ALL,"portuguese");
+    printArt();
     while(op!=3)
     {
-      printf("Digite uma opcao:\n1-cadastrar\n2-Pesquisar\n3-SAIR\n");
+      printf("\n---------------->MENU DE OPCOES<----------------\n");
+      printf("\n1-Cadastrar\n2-Pesquisar\n3-Sair\nDigite uma opcao: ");
       scanf("%d",&op);
       cad=0;
       if(op ==1)
       {
-        printf("Digite o que gostaria de cadastrar:\n1-cliente\n2-funcionario\n3-fornecedor\n4-festa\n");
+        printf("\n------------>OPCOES DE CADASTRO<------------\n");
+        printf("\n1-Cliente\n2-Funcionario\n3-Fornecedor\n4-Festa\n5-Sair\nDigite o que gostaria de cadastrar: ");
         scanf("%d",&cad);
       }
       if(cad !=0)
@@ -26,7 +35,7 @@ int main()
           switch(cad)
           {
           case 1:
-            //colocar a funcao cliente aqui
+            funcaoCliente();
           break;
           case 2:
             funcaoFuncionarios();
@@ -44,4 +53,29 @@ int main()
     }
 
     return 0;
+}
+
+void printArt(){
+    cout << "-----------------------------------------------------" << endl;
+    cout << "     Salao de Festas - Patati Patata       " << endl;
+    cout << "   _                             .-." << endl;
+    cout << "  / )  .-.    ___          __   (   )" << endl;
+    cout << " ( (  (   ) .'___)        (__'-._) (" << endl;
+    cout << "  \\ '._) (,'.'               '.     '-." << endl;
+    cout << "   '.      /  \"\\               '    -. '." << endl;
+    cout << "     )    /   \\ \\   .-.   ,'.   )  (  ',_)    _" << endl;
+    cout << "   .'    (     \\ \\ (   \ . .' .'    )    .-. ( \ " << endl;
+    cout << "  (  .''. '.    \\ \\|  .' .' ,',--, /    (   ) ) )" << endl;
+    cout << "   \\ \\   ', :    \\    .-'  ( (  ( (     _) (,' / " << endl;
+    cout << "    \\ \\   : :    )  / _     ' .  \ \  ,'      / " << endl;
+    cout << "  ,' ,'   : ;   /  /,' '.   /.'  / / ( (\    (" << endl;
+    cout << "  '.'      \"   (    .-'. \       ''   \_)\    \ " << endl;
+    cout << "                \\  |    \ \__             )    )" << endl;
+    cout << "              ___\\ |     \___;           /  , /" << endl;
+    cout << "             /  ___)                    (  ( (" << endl;
+    cout << "             '.'                         ) ;) ;" << endl;
+    cout << "                                        (_/(_/" << endl;
+    cout << "----------------------------------------------------" << endl;
+
+
 }

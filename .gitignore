@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+files/client.txt
+files/contract.txt
+files/fornecedor.txt
+files/funcionario.txt
+files/party.txt
