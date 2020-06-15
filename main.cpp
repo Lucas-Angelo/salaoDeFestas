@@ -38,7 +38,7 @@ int main()
             funcaoCliente();
           break;
           case 2:
-            funcaoFuncionarios();
+            funcaoFuncionarios(op, cad);
           break;
           case 3:
             //colocar a funcao  fornecedor

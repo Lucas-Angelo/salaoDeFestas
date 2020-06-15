@@ -17,11 +17,14 @@ float salvarSalario();
 char salvarTipo();
 
 
-int funcaoFuncionarios()
+int funcaoFuncionarios(int op, int cad)
 {
     setlocale(LC_ALL,"portuguese"); //
     FuncionariosClass funcionarios;
 
+
+    if(op==1 && cad==2)
+    {
 
     char confirmar;
     cout << "\n>>> CADASTRAR FUNCIONÁRIO <<<" << endl;
@@ -57,8 +60,19 @@ int funcaoFuncionarios()
         cin >> confirmar;
     } while (toupper(confirmar)!='C');
 
+    funcionarios.save();
+    FuncionariosClass f2 = FuncionariosClass::get(funcionarios.codigo);
+    cout << f2.codigo;
+    cout << f2.salario;
+
     cout << "\n---> FUNCIONÁRIO CADASTRADO COM SUCESSO <---\n\n" << endl;
 
+    }
+
+    if(op==2 && cad==2)
+    {
+        printf("Procurando...");
+    }
 
 
     return 0;
@@ -119,6 +133,7 @@ float salvarSalario() //Função para pegar o salário do funcionário.
     cout << "Digite o salário: ";
     do
     {
+        fflush(stdin);
         scanf("%f", &salario);
         if(salario < 0)
         {
@@ -137,6 +152,7 @@ char salvarTipo() //Função para pegar o tipo do funcionário.
     cout << "\nDigite o tipo do funcionário? ";
     do
     {
+        fflush(stdin);
         scanf(" %c", &tipo);
         tipo = toupper(tipo);
         if(tipo!='T' && tipo!='F')

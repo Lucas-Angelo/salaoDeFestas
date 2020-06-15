@@ -22,10 +22,12 @@
 1589921744 source:c:\users\user\desktop\documentos\gui\trabalhos\aeds aegypt\patati-patata\salaodefestas\clienteclass.cpp
 	"ClienteClass.h"
 
-1592183974 c:\users\lcs20\documents\repositorios\salaodefestas\fornecedorclass.h
+1592190048 c:\users\lcs20\documents\repositorios\salaodefestas\fornecedorclass.h
 	<string>
+	<fstream>
+	"helpers/ModelHelper.h"
 
-1592181571 source:c:\users\lcs20\documents\repositorios\salaodefestas\funcaofuncionarios.cpp
+1592235260 source:c:\users\lcs20\documents\repositorios\salaodefestas\funcaofuncionarios.cpp
 	<iostream>
 	<stdio.h>
 	"munit.h"
@@ -42,8 +44,12 @@
 	<inttypes.h>
 	<string.h>
 
-1592184133 c:\users\lcs20\documents\repositorios\salaodefestas\funcionariosclass.h
+1592192776 c:\users\lcs20\documents\repositorios\salaodefestas\funcionariosclass.h
 	<string>
+	<fstream>
+	<sstream>
+	<stdlib.h>
+	"helpers/ModelHelper.h"
 
 1592183927 source:c:\users\lcs20\documents\repositorios\salaodefestas\funcionariosclass.cpp
 	"FuncionariosClass.h"
@@ -54,7 +60,7 @@
 	"ClienteClass.h"
 	"FornecedorClass.h"
 
-1592183927 c:\users\lcs20\documents\repositorios\salaodefestas\funcaofuncionarios.h
+1592235236 c:\users\lcs20\documents\repositorios\salaodefestas\funcaofuncionarios.h
 
 1589921110 source:c:\users\lcs20\documents\repositorios\salaodefestas\munit.c
 	<stdbool.h>
@@ -225,4 +231,65 @@
 	<string>
 	<time.h>
 	"FuncionariosClass.h"
+
+1589921110 source:c:\users\lcs20\documents\repositorios\salaodefestas\clienteclass.cpp
+	"ClienteClass.h"
+
+1592192207 c:\users\lcs20\documents\repositorios\salaodefestas\clienteclass.h
+	<string>
+	<fstream>
+	"helpers/ModelHelper.h"
+
+1592189152 c:\users\lcs20\documents\repositorios\salaodefestas\helpers\modelhelper.h
+	<string>
+
+1592170430 source:c:\users\lcs20\documents\repositorios\salaodefestas\fornecedorclass.cpp
+	"FornecedorClass.h"
+
+1592189152 source:c:\users\lcs20\documents\repositorios\salaodefestas\contratoclass.cpp
+	"ContratoClass.h"
+
+1592190050 c:\users\lcs20\documents\repositorios\salaodefestas\contratoclass.h
+	<fstream>
+	"helpers/ModelHelper.h"
+
+1592189152 source:c:\users\lcs20\documents\repositorios\salaodefestas\festaclass.cpp
+	"FestaClass.h"
+
+1592190046 c:\users\lcs20\documents\repositorios\salaodefestas\festaclass.h
+	<string>
+	<fstream>
+	"helpers/ModelHelper.h"
+
+1592189152 source:c:\users\lcs20\documents\repositorios\salaodefestas\funcaocliente.cpp
+	<iostream>
+	<stdio.h>
+	"munit.h"
+	<string>
+	<time.h>
+	"ClienteClass.h"
+
+1592189152 source:c:\users\lcs20\documents\repositorios\salaodefestas\helpers\datehelper.cpp
+	"DateHelper.h"
+
+1592189972 c:\users\lcs20\documents\repositorios\salaodefestas\helpers\datehelper.h
+	<iostream>
+	<string>
+	<stdlib.h>
+
+1592189152 source:c:\users\lcs20\documents\repositorios\salaodefestas\helpers\modelhelper.cpp
+	"ModelHelper.h"
+
+1592235269 source:c:\users\lcs20\documents\repositorios\salaodefestas\main.cpp
+	<iostream>
+	<stdio.h>
+	"munit.h"
+	"funcaoFuncionarios.h"
+	<string>
+	<time.h>
+	"ClienteClass.h"
+	"FornecedorClass.h"
+	"funcaoCliente.h"
+
+1592189152 c:\users\lcs20\documents\repositorios\salaodefestas\funcaocliente.h
 
