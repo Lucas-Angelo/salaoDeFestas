@@ -3,7 +3,7 @@
 
 using namespace std;
 #include <fstream>
-#include "ModelHelper.h"
+#include "helpers/ModelHelper.h"
 
 
 class ContratoClass

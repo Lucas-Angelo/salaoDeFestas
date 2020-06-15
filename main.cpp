@@ -6,7 +6,6 @@
 #include "ClienteClass.h"
 #include "FornecedorClass.h"
 #include "funcaoCliente.h"
-#include "DateHelper.h"
 
 using namespace std;
 void printArt();

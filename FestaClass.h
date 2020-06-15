@@ -4,7 +4,7 @@
 using namespace std;
 #include <string>
 #include <fstream>
-#include "ModelHelper.h"
+#include "helpers/ModelHelper.h"
 
 class FestaClass
 {
