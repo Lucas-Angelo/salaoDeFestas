@@ -34,7 +34,6 @@ class ContratoClass
             ss<<cod;
             string cd;
             ss>>cd;
-            int codLength = cd.length();
             string line;
             ContratoClass c;
             // Ler linha por linha até o fim do arquivo.

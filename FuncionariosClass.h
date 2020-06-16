@@ -7,7 +7,6 @@ using namespace std;
 #include <sstream>
 #include <stdlib.h>
 #include "helpers/ModelHelper.h"
-#include <sstream>
 
 class FuncionariosClass
 {
@@ -34,7 +33,6 @@ class FuncionariosClass
             ss<<cod;
             string cd;
             ss>>cd;
-            int codLength = cd.length();
             string line;
             FuncionariosClass f;
             // Ler linha por linha até o fim do arquivo.
