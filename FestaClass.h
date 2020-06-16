@@ -35,7 +35,6 @@ class FestaClass
             ss<<cod;
             string cd;
             ss>>cd;
-            int codLength = cd.length();
             string line;
             FestaClass f;
             // Ler linha por linha até o fim do arquivo.
