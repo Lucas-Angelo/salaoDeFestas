@@ -32,7 +32,6 @@ class ClienteClass
             ss<<cod;
             string cd;
             ss>>cd;
-            int codLength = cd.length();
             string line;
             ClienteClass c;
             // Ler linha por linha até o fim do arquivo.
@@ -48,7 +47,6 @@ class ClienteClass
             }
             return c;
         }
-
 };
 
 #endif // CLIENTECLASS_H
