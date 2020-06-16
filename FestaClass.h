@@ -4,6 +4,7 @@
 using namespace std;
 #include <string>
 #include <fstream>
+#include <sstream>
 #include "helpers/ModelHelper.h"
 
 class FestaClass
@@ -23,26 +24,31 @@ class FestaClass
             file.open ("files/party.txt", std::ios_base::app);
             file << codigo << ";" << qtdConvidados << ";"  << dt << ";" << diaSemana  << ";" << hora_inicio  << ";" << hora_fim  << ";" << tema << ";" << codigo_cliente << "\n";
             file.close();
+            return 1;
         }
         static FestaClass get(int cod) {
             // Abrir o arquivo para leitura
             ifstream inFile;
             inFile.open("files/party.txt");
-            int codLength = to_string(cod).length();
+            stringstream ss;
+            ss<<cod;
+            string cd;
+            ss>>cd;
+            int codLength = cd.length();
             string line;
             FestaClass f;
             // Ler linha por linha até o fim do arquivo.
             while (getline(inFile, line)) {
                 // Se encontrar o codigo da festa, quebrar a linha e definir os atributos da classe
-                if(ModelHelper::split(';', line, 0) ==  to_string(cod)) {
-                    f.codigo = stoi(ModelHelper::split(';',line, 0));
-                    f.qtdConvidados = stoi(ModelHelper::split(';',line, 1));
+                if(ModelHelper::split(';', line, 0) ==  cd) {
+                    f.codigo = atoi(ModelHelper::split(';',line, 0).c_str());
+                    f.qtdConvidados = atoi(ModelHelper::split(';',line, 1).c_str());
                     f.dt = ModelHelper::split(';',line, 2);
-                    f.diaSemana = stoi(ModelHelper::split(';',line, 3));
+                    f.diaSemana = atoi(ModelHelper::split(';',line, 3).c_str());
                     f.hora_inicio = ModelHelper::split(';',line, 4);
                     f.hora_fim = ModelHelper::split(';',line, 5);
                     f.tema = ModelHelper::split(';',line, 6);
-                    f.codigo_cliente = stoi(ModelHelper::split(';',line, 7));
+                    f.codigo_cliente = atoi(ModelHelper::split(';',line, 7).c_str());
                 }
             }
             return f;
