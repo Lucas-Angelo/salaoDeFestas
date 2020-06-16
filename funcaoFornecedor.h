@@ -2,5 +2,6 @@
 #define FUNCAOFORNECEDOR_H
 
 int funcaoFornecedor();
+void procuraFornecedor();
 
 #endif

@@ -61,8 +61,10 @@ void procuraCliente() {
             cout << "Data de Nascimento: " << c.dtNascimento << endl;
             cout << "Telefone: " << c.telefone << endl;
             cout << "-------------------------------------------------------------" << endl;
+            i++;
         }
     }
+    if(i == 0) cout << "------------------------\nNenhum item encontrado\n------------------------";
 }
 
 
