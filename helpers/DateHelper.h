@@ -2,6 +2,8 @@
 #define DATEHELPER_H
 
 using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -50,7 +52,8 @@ class DateHelper
                     cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl;
             } while(is_valid == 0);
 
-            return to_string(day)  + "/" + to_string(month) + "/" + to_string(year);
+            //return to_string(day)  + "/" + to_string(month) + "/" + to_string(year);
+            return "";
         }
         string inputTime(){
             int hour, minute, valid;

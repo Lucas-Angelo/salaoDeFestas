@@ -2,6 +2,7 @@
 #define FORNECEDORCLASS_H
 
 using namespace std;
+#include <stdlib.h>
 #include <string>
 #include <fstream>
 #include <sstream>

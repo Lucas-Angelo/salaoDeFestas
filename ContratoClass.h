@@ -2,6 +2,7 @@
 #define CONTRATOCLASS_H
 
 using namespace std;
+#include <stdlib.h>
 #include <fstream>
 #include <sstream>
 #include "helpers/ModelHelper.h"
