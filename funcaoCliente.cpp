@@ -29,6 +29,8 @@ int funcaoCliente()
     printf("\nDigite a data de nascimento do Cliente: ");
     getline(cin >> ws,cli.dtNascimento);
 
+    cli.save();
+
     return 0;
 }
 

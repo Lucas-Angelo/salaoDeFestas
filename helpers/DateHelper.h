@@ -7,6 +7,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <sstream>
 
 class DateHelper
 {
@@ -52,8 +53,16 @@ class DateHelper
                     cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl;
             } while(is_valid == 0);
 
-            //return to_string(day)  + "/" + to_string(month) + "/" + to_string(year);
-            return "";
+            stringstream ss, ss2, ss3;
+            string sd,sm,sy;
+            ss<<day;
+            ss>>sd;
+            ss2<<month;
+            ss2>>sm;
+            ss3<<year;
+            ss3>>sy;
+
+            return sd + "/" + sm + "/" + sy;
         }
         string inputTime(){
             int hour, minute, valid;

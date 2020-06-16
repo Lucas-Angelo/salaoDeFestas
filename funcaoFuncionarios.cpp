@@ -17,13 +17,13 @@ float salvarSalario();
 char salvarTipo();
 
 
-int funcaoFuncionarios(int op, int cad)
+int funcaoFuncionarios(int op)
 {
-    setlocale(LC_ALL,"portuguese"); //
-    FuncionariosClass funcionarios;
+    setlocale(LC_ALL,"portuguese"); //Adicionar caracteres especiais
+    FuncionariosClass funcionarios; //Orientar a objeto por meio da classe
 
 
-    if(op==1 && cad==2)
+    if(op==1) //Se a opção for para cadastrar
     {
 
     char confirmar;
@@ -60,16 +60,13 @@ int funcaoFuncionarios(int op, int cad)
         cin >> confirmar;
     } while (toupper(confirmar)!='C');
 
-    funcionarios.save();
-    FuncionariosClass f2 = FuncionariosClass::get(funcionarios.codigo);
-    cout << f2.codigo;
-    cout << f2.salario;
+    funcionarios.save(); //Salvar os dados do objeto classe funcionarios no arquivo
 
     cout << "\n---> FUNCIONÁRIO CADASTRADO COM SUCESSO <---\n\n" << endl;
 
     }
 
-    if(op==2 && cad==2)
+    if(op==2)
     {
         printf("Procurando...");
     }

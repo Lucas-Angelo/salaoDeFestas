@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "munit.h"
 #include "funcaoFuncionarios.h"
+#include "funcaoFesta.h"
 
 using namespace std;
 #include <string>
@@ -9,6 +10,7 @@ using namespace std;
 #include "ClienteClass.h"
 #include "FornecedorClass.h"
 #include "funcaoCliente.h"
+#include "helpers/DateHelper.h"
 
 using namespace std;
 void printArt();
@@ -38,13 +40,13 @@ int main()
             funcaoCliente();
           break;
           case 2:
-            funcaoFuncionarios(op, cad);
+            funcaoFuncionarios(op);
           break;
           case 3:
             //colocar a funcao  fornecedor
           break;
           case 4:
-            //colocar a funcao  festa
+            funcaoFesta();
           break;
           default:
             cad=0;
