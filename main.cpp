@@ -72,7 +72,7 @@ int main()
           break;
           case 3:
            //procurar fornecedor
-           funcaoFornecedor ();
+           procuraFornecedor();
           break;
           case 4:
             //procurar festa
