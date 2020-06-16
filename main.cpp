@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "munit.h"
 #include "funcaoFuncionarios.h"
+#include "funcaoFornecedor.h"
 
 using namespace std;
 #include <string>
@@ -42,10 +43,13 @@ int main()
           break;
           case 3:
             //colocar a funcao  fornecedor
-            procuraCliente();
+            funcaoFornecedor ();
           break;
           case 4:
-            //colocar a funcao  festa
+            //Marco colocar num lugar descente
+            procuraCliente();
+          case 5:
+            //Marco colocar num lugar descente
             procuraFuncionario();
           break;
           default:
