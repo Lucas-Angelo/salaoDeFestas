@@ -2,5 +2,6 @@
 #define FUNCAOCLIENTE
 
 int funcaoCliente();
+void procuraCliente();
 
 #endif
