@@ -42,9 +42,11 @@ int main()
           break;
           case 3:
             //colocar a funcao  fornecedor
+            procuraCliente();
           break;
           case 4:
             //colocar a funcao  festa
+            procuraFuncionario();
           break;
           default:
             cad=0;

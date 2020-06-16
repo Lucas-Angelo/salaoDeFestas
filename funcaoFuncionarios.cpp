@@ -8,6 +8,8 @@ using namespace std;
 #include <string>
 #include <time.h>
 #include "FuncionariosClass.h"
+#include "helpers/ModelHelper.h"
+#include <fstream>
 
 unsigned int gerarCodigo();
 string salvarNome();
@@ -162,4 +164,37 @@ char salvarTipo() //Função para pegar o tipo do funcionário.
     } while (tipo!='T' && tipo!='F');
 
     return tipo;
+}
+
+void procuraFuncionario() {
+    cout << "\n------------>PESQUISA DE FUNCIONÁRIOS<------------" << endl;
+    string nome;
+    cout << "Pesquisar por nome: ";
+    cin >> nome;
+    FuncionariosClass f;
+    int i=0;
+    ifstream inFile;
+    // Abrir o arquivo para leitura
+    inFile.open("files/funcionario.txt");
+    string line;
+    // Ler linha por linha até o fim do arquivo.
+    while (getline(inFile, line)) {
+        // Se encontrar o codigo do funcionario, quebrar a linha e definir os atributos da classe
+        if(ModelHelper::split(';', line, 1).find(nome) != std::string::npos) {
+          f.codigo = atoi(ModelHelper::split(';',line, 0).c_str());
+          f.nome = ModelHelper::split(';',line, 1);
+          f.telefone = atoi(ModelHelper::split(';',line, 2).c_str());
+          f.funcao = ModelHelper::split(';',line, 3);
+          f.salario = atof(ModelHelper::split(';',line, 4).c_str());
+          f.tipo = ModelHelper::split(';',line, 5)[0];
+          cout << "-------------------------------------------------------------" << endl;
+          cout << "Código: " << f.codigo << endl;
+          cout << "Nome: " << f.nome << endl;
+          cout << "Telefone: " << f.telefone << endl;
+          cout << "Função: " << f.funcao << endl;
+          cout << "Salário: " << f.salario << endl;
+          cout << "Tipo: " << f.tipo << endl;
+          cout << "-------------------------------------------------------------" << endl;
+        }
+    }
 }
