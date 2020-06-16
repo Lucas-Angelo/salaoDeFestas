@@ -16,7 +16,7 @@ void printArt();
 
 int main()
 {
-    int op=0,cad;
+    int op=0,cad,pes;
     setlocale(LC_ALL,"portuguese");
     printArt();
     while(op!=3)
@@ -25,12 +25,20 @@ int main()
       printf("\n1-Cadastrar\n2-Pesquisar\n3-Sair\nDigite uma opcao: ");
       scanf("%d",&op);
       cad=0;
+      pes=0;
       if(op ==1)
       {
         printf("\n------------>OPCOES DE CADASTRO<------------\n");
-        printf("\n1-Cliente\n2-Funcionario\n3-Fornecedor\n4-Festa\n5-Sair\nDigite o que gostaria de cadastrar: ");
+        printf("\n1-Cliente\n2-Funcionario\n3-Fornecedor\n4-Festa\n5-Voltar\nDigite o que gostaria de cadastrar: ");
         scanf("%d",&cad);
       }
+      else if(op==2)
+      {
+        printf("\n------------>OPCOES DE PESQUISA<------------\n");
+        printf("\n1-Cliente\n2-Funcionario\n3-Fornecedor\n4-Voltar\nDigite o que gostaria de pesquisar: ");
+        scanf("%d",&pes);
+      }
+
       if(cad !=0)
       {
           switch(cad)
@@ -42,19 +50,37 @@ int main()
             funcaoFuncionarios(op, cad);
           break;
           case 3:
-            //colocar a funcao  fornecedor
             funcaoFornecedor ();
           break;
-          case 4:
-            //Marco colocar num lugar descente
-            procuraCliente();
-          case 5:
-            //Marco colocar num lugar descente
-            procuraFuncionario();
+           case 4:
+            //festa
           break;
+
           default:
             cad=0;
-          }
+        }
+      }
+      if(pes !=0)
+      {
+          switch(pes)
+          {
+          case 1:
+             procuraCliente();
+          break;
+          case 2:
+           procuraFuncionario();
+          break;
+          case 3:
+           //procurar fornecedor
+           funcaoFornecedor ();
+          break;
+          case 4:
+            //procurar festa
+            procuraCliente();
+          break;
+          default:
+            pes=0;
+        }
       }
     }
 

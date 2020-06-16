@@ -19,16 +19,16 @@ int funcaoCliente()
     printf("\n------------>CADASTRO DE CLIENTE<------------\n");
     cli.codigo = rand();
 
-    printf("\nDigite o nome do Cliente: ");
+    printf("\nDigite o nome: ");
     getline(cin >> ws,cli.nome);
 
-    printf("\nDigite o endereço do Cliente: ");
+    printf("\nDigite o endereço: ");
     getline(cin >> ws,cli.endereco);
 
-    printf("\nDigite o telefone do Cliente: ");
+    printf("\nDigite o telefone: ");
     cin>>cli.telefone;
 
-    printf("\nDigite a data de nascimento do Cliente: ");
+    printf("\nDigite a data de nascimento: ");
     getline(cin >> ws,cli.dtNascimento);
 
     return 0;
