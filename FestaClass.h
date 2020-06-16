@@ -12,14 +12,14 @@ class FestaClass
 {
     public:
         FestaClass();
-        int codigo = NULL;
+        unsigned int codigo = NULL;
         int qtdConvidados;
         string dt;
         int diaSemana;
         string hora_inicio;
         string hora_fim;
         string tema;
-        int codigo_cliente;
+        unsigned int codigo_cliente;
         int save() {
             ofstream file;
             file.open ("files/party.txt", std::ios_base::app);

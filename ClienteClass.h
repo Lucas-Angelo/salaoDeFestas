@@ -12,7 +12,7 @@ using namespace std;
 class ClienteClass
 {
     public: ClienteClass();
-        int codigo  = NULL;
+        unsigned int codigo  = NULL;
         string nome;
         string endereco;
         unsigned long telefone;

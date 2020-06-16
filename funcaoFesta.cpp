@@ -9,7 +9,9 @@ using namespace std;
 #include "FestaClass.h"
 #include "ClienteClass.h"
 
-int receberCodigoCliente();
+unsigned int receberCodigoCliente();
+unsigned int gerarCodigoFesta();
+int salvarConvid();
 
 int funcaoFesta()
 {
@@ -20,18 +22,39 @@ int funcaoFesta()
 
     if(festa.codigo_cliente == 0) //Se o usuário desistiu de cadastrar a festa.
     {
-        cout << "Saindo do cadastro de festas..." << endl;
+        cout << "\nSaindo do cadastro de festas..." << endl;
     }
     else // Caso o código tenha sido encontado, continuar cadastro de festa
     {
-        cout << "continuando" << endl;
+        char confirmar;
+        cout << "\n>>> CADASTRAR FESTA <<<" << endl;
+
+        do
+        {
+
+            festa.codigo = gerarCodigoFesta();
+
+            festa.qtdConvidados = salvarConvid();
+
+
+            cout << "\nDados da festa:" << endl;
+            printf("Código: %d\n", festa.codigo);
+            printf("Quantidade de convidados: %d\n", festa.qtdConvidados);
+
+            printf("\n---> Confirmar dados <---");
+            printf("\nC - Para confirmar");
+            printf("\nR - Para refazer");
+            printf("\nOs dados inseridos estão corretos? ");
+            cin >> confirmar;
+        } while (toupper(confirmar)!='C');
+
     }
 
 }
 
-int receberCodigoCliente()
+unsigned int receberCodigoCliente()
 {
-    int codigo;
+    unsigned int codigo;
     ClienteClass verificarExistencia;
     cout << "\nInforme o código do cliente(Digite 0 para sair): ";
     do
@@ -53,4 +76,29 @@ int receberCodigoCliente()
         return codigo;
     }
 
+}
+
+unsigned int gerarCodigoFesta() //Função para gerar o código aleatório da festa
+{
+    srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
+    unsigned int codigo;
+    codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
+    return codigo;
+}
+
+int salvarConvid()
+{
+    int qtd;
+    cout << "\nQual a quantidade de convidados? ";
+    do
+    {
+        cin >> qtd;
+        if(qtd < 0)
+        {
+            cout << "Números negativos são inválidos!" << endl;
+            cout << "Digite uma quantidade válida: ";
+        }
+    } while (qtd < 0);
+
+    return qtd;
 }
