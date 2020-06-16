@@ -7,6 +7,7 @@ using namespace std;
 #include <sstream>
 #include <stdlib.h>
 #include "helpers/ModelHelper.h"
+#include <sstream>
 
 class FuncionariosClass
 {
@@ -23,6 +24,7 @@ class FuncionariosClass
             file.open ("files/funcionario.txt", std::ios_base::app);
             file << codigo << ";" << nome << ";"  << telefone << ";" << funcao << ";"  << salario << ";"  << tipo << "\n";
             file.close();
+            return 1;
         }
         static FuncionariosClass get(int cod) {
             // Abrir o arquivo para leitura
