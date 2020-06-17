@@ -17,6 +17,10 @@ unsigned int gerarCodigoFesta();
 int salvarConvid();
 string salvarData();
 int salvarDia();
+string salvarHoraInicio();
+string salvarHoraFim();
+int verificarHorarios(string horaInicio, string horaFim);
+string salvarTema();
 
 int funcaoFesta()
 {
@@ -34,6 +38,7 @@ int funcaoFesta()
         char confirmar;
         cout << "\n>>> CADASTRAR FESTA <<<" << endl;
 
+        int conferir=0;
         do
         {
 
@@ -45,12 +50,29 @@ int funcaoFesta()
 
             festa.diaSemana = salvarDia();
 
+            do
+            {
+                festa.hora_inicio = salvarHoraInicio();
+                festa.hora_fim = salvarHoraFim();
+
+                conferir = verificarHorarios(festa.hora_inicio, festa.hora_fim);
+                if(conferir==0)
+                {
+                    cout << "A festa pode ter no máximo 4 horas de duração!" << endl;
+                }
+            } while (conferir==0);
+
+            festa.tema = salvarTema();
+
 
             cout << "\nDados da festa:" << endl;
             cout << "Código: " << festa.codigo << endl;
             cout << "Quantidade de convidados: " << festa.qtdConvidados << endl;
             cout << "Data da festa: " << festa.dt << endl;
-            cout << "Dia da festa: " << festa.diaSemana << "\n" << endl;
+            cout << "Dia da festa: " << festa.diaSemana << endl;
+            cout << "Hora do início: " << festa.hora_inicio << endl;
+            cout << "Hora do fim: " << festa.hora_fim << endl;
+            cout << "Tema: " << festa.tema << "\n" << endl;
 
             cout << "\n---> Confirmar dados <---" << endl;
             cout << "C - Para confirmar" << endl;
@@ -119,7 +141,7 @@ string salvarData()
     DateHelper dh; //Chamar classe DataHelper, que verifica se a data inserida é válida
     cout << "Formato de data aceitável: dd/mm/aaaa" << endl;
     cout << "Digite a data: ";
-    string data = dh.inputDate(); //Equivale ao cin da data
+    string data = dh.inputDate(); //Equivale ao cin da data, chamando a função para verificar se é válida
     return data;
 }
 
@@ -139,4 +161,69 @@ int salvarDia()
     cin >> numeroDia;
 
     return numeroDia;
+}
+
+string salvarHoraInicio()
+{
+    DateHelper tm;
+    cout << "Formato de horário aceitável: HH:mm" << endl;
+    cout << "Digite o horário do início: ";
+    string hora = tm.inputTime(); //Equivale ao cin da hora de inicio, chamando a função para verificar se é válido
+
+    return hora;
+}
+
+string salvarHoraFim()
+{
+    DateHelper tm;
+    cout << "Digite o horário do fim: ";
+    string hora = tm.inputTime(); //Equivale ao cin da hora de fim, chamando a função para verificar se é válido
+
+    return hora;
+}
+
+int verificarHorarios(string horaInicio, string horaFim)
+{
+    //Início do sistema de verificar se a festa tem no máximo 4 horas de duração
+    int i;
+    string inicioHora, inicioMinuto;
+    string fimHora, fimMinuto;
+
+    inicioHora = horaInicio.substr(0,2); //Salvar a hora de inicio
+    inicioMinuto = horaInicio.substr(3,2); //E salvar os minutos que inicia também
+
+    fimHora = horaFim.substr(0,2); //Salvar a hora de fim
+    fimMinuto = horaFim.substr(3,2);//E salvar os minutos que finaliza também
+
+    int somaInicio=0, somaFim=0;
+
+    somaInicio = (atoi(inicioHora.c_str()) * 60) + atoi(inicioMinuto.c_str()); //Agora converter as strings de horas e minutos de início, em ints. E transformar as horas em minutos.
+    somaFim = (atoi(fimHora.c_str()) * 60) + atoi(fimMinuto.c_str()); //Mesma conversão e transformação para as horas e minutos de fim.
+    //Fim do sistema de verificar se a festa tem no máximo 4 horas de duração
+
+    //Início sistema para limitar horários do sábado
+
+    //FIM
+
+
+
+    if((somaFim-somaInicio)<=240) //Se a difernça de minutos do início da festa, para o final, for menor que 240min(4 horas), festa aceita.
+    {
+        return 1;
+    }
+    else //Festa não aceita, ultrapassou limite de 4 horas.
+    {
+        return 0;
+    }
+
+
+}
+
+string salvarTema()
+{
+    string tema;
+    cout << "Qual o tema? ";
+    getline(cin >> ws,tema);
+
+    return tema;
 }
