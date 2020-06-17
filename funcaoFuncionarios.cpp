@@ -1,15 +1,12 @@
 #include <iostream>
-#include <stdio.h>
-#include "munit.h"
 #include <locale.h>
 #include <ctype.h>
-
-using namespace std;
 #include <string>
 #include <time.h>
+using namespace std;
+
 #include "FuncionariosClass.h"
 #include "helpers/ModelHelper.h"
-#include <fstream>
 
 unsigned int gerarCodigo();
 string salvarNome();
@@ -19,14 +16,12 @@ float salvarSalario();
 char salvarTipo();
 
 
-int funcaoFuncionarios(int op)
+int funcaoFuncionarios()
 {
     setlocale(LC_ALL,"portuguese"); //Adicionar caracteres especiais
     FuncionariosClass funcionarios; //Orientar a objeto por meio da classe
 
 
-    if(op==1) //Se a opção for para cadastrar
-    {
 
     char confirmar;
     cout << "\n>>> CADASTRAR FUNCIONÁRIO <<<" << endl;
@@ -48,30 +43,23 @@ int funcaoFuncionarios(int op)
 
 
         cout << "\nDados do funcionário:" << endl;
-        printf("Código: %d\n", funcionarios.codigo);
-        cout << "Nome: " + funcionarios.nome << endl;
-        cout << "Telefone: " + funcionarios.telefone << endl;
-        cout << "Função: " + funcionarios.funcao << endl;
-        printf("Salário: %.2f\n", funcionarios.salario);
-        printf("Tipo: %c\n", funcionarios.tipo);
+        cout << "Código: " << funcionarios.codigo << endl;
+        cout << "Nome: " << funcionarios.nome << endl;
+        cout << "Telefone: " << funcionarios.telefone << endl;
+        cout << "Função: " << funcionarios.funcao << endl;
+        cout << "Salário: " << funcionarios.salario << endl;
+        cout << "Tipo: " << funcionarios.tipo << "\n" << endl;
 
-        printf("\n---> Confirmar dados <---");
-        printf("\nC - Para confirmar");
-        printf("\nR - Para refazer");
-        printf("\nOs dados inseridos estão corretos? ");
+        cout << "\n---> Confirmar dados <---" << endl;
+        cout << "C - Para confirmar" << endl;
+        cout << "R - Para refazer" << endl;
+        cout << "Os dados inseridos estão corretos? ";
         cin >> confirmar;
     } while (toupper(confirmar)!='C');
 
     funcionarios.save(); //Salvar os dados do objeto classe funcionarios no arquivo
 
     cout << "\n---> FUNCIONÁRIO CADASTRADO COM SUCESSO <---\n\n" << endl;
-
-    }
-
-    if(op==2)
-    {
-        printf("Procurando...");
-    }
 
 
     return 0;
@@ -133,7 +121,7 @@ float salvarSalario() //Função para pegar o salário do funcionário.
     do
     {
         fflush(stdin);
-        scanf("%f", &salario);
+        cin >> salario;
         if(salario < 0)
         {
             cout << "Salário inválido!\nDigite um salário positivo: ";
@@ -152,7 +140,7 @@ char salvarTipo() //Função para pegar o tipo do funcionário.
     do
     {
         fflush(stdin);
-        scanf(" %c", &tipo);
+        cin >> tipo;
         tipo = toupper(tipo);
         if(tipo!='T' && tipo!='F')
         {

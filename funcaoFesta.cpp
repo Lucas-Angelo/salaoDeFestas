@@ -1,13 +1,16 @@
 #include <iostream>
-#include <stdio.h>
-#include "munit.h"
 #include <locale.h>
-
-using namespace std;
 #include <string>
 #include <time.h>
+
+using namespace std;
+
 #include "FestaClass.h"
 #include "ClienteClass.h"
+#include "helpers/DateHelper.h"
+
+#include "munit.h"
+
 
 unsigned int receberCodigoCliente();
 unsigned int gerarCodigoFesta();
@@ -38,13 +41,13 @@ int funcaoFesta()
 
 
             cout << "\nDados da festa:" << endl;
-            printf("Código: %d\n", festa.codigo);
-            printf("Quantidade de convidados: %d\n", festa.qtdConvidados);
+            cout << "Código: " << festa.codigo << endl;
+            cout << "Quantidade de convidados: " << festa.qtdConvidados << "\n" << endl;
 
-            printf("\n---> Confirmar dados <---");
-            printf("\nC - Para confirmar");
-            printf("\nR - Para refazer");
-            printf("\nOs dados inseridos estão corretos? ");
+            cout << "\n---> Confirmar dados <---" << endl;
+            cout << "C - Para confirmar" << endl;
+            cout << "R - Para refazer" << endl;
+            cout << "Os dados inseridos estão corretos? ";
             cin >> confirmar;
         } while (toupper(confirmar)!='C');
 
