@@ -40,7 +40,7 @@ void procuraCliente() {
     cout << "\n------------>PESQUISA DE CLIENTES<------------" << endl;
     string nome;
     cout << "Pesquisar por nome: ";
-    cin >> nome;
+    getline(cin >> ws, nome);
     ClienteClass c;
     int i=0;
     ifstream inFile;

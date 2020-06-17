@@ -20,7 +20,7 @@ void procuraFornecedor() {
     cout << "\n------------>PESQUISA DE FORNECEDOR<------------" << endl;
     string nome;
     cout << "Pesquisar por nome: ";
-    cin >> nome;
+    getline(cin >> ws, nome);
     FornecedorClass f;
     int i=0;
     ifstream inFile;

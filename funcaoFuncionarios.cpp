@@ -2,11 +2,11 @@
 #include <stdio.h>
 #include "munit.h"
 #include <locale.h>
-#include <ctype.h>
 
 using namespace std;
 #include <string>
 #include <time.h>
+#include <cctype>
 #include "FuncionariosClass.h"
 #include "helpers/ModelHelper.h"
 #include <fstream>
@@ -167,7 +167,7 @@ void procuraFuncionario() {
     cout << "\n------------>PESQUISA DE FUNCIONÁRIOS<------------" << endl;
     string nome;
     cout << "Pesquisar por nome: ";
-    cin >> nome;
+    getline(cin >> ws, nome);
     FuncionariosClass f;
     int i=0;
     ifstream inFile;
@@ -177,10 +177,10 @@ void procuraFuncionario() {
     // Ler linha por linha até o fim do arquivo.
     while (getline(inFile, line)) {
         // Se encontrar o codigo do funcionario, quebrar a linha e definir os atributos da classe
-        if(ModelHelper::split(';', line, 1).find(nome) != std::string::npos) {
+        if((ModelHelper::split(';', line, 1)).find(nome) != std::string::npos) {
           f.codigo = atoi(ModelHelper::split(';',line, 0).c_str());
           f.nome = ModelHelper::split(';',line, 1);
-          f.telefone = atoi(ModelHelper::split(';',line, 2).c_str());
+          f.telefone = ModelHelper::split(';',line, 2);
           f.funcao = ModelHelper::split(';',line, 3);
           f.salario = atof(ModelHelper::split(';',line, 4).c_str());
           f.tipo = ModelHelper::split(';',line, 5)[0];
