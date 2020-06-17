@@ -2,5 +2,5 @@
 
 FuncionariosClass::FuncionariosClass()
 {
-    //ctor
+
 }

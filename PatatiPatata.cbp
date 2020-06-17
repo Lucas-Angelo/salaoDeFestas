@@ -38,6 +38,8 @@
 		</Compiler>
 		<Unit filename="ClienteClass.cpp" />
 		<Unit filename="ClienteClass.h" />
+		<Unit filename="ContratoClass.cpp" />
+		<Unit filename="ContratoClass.h" />
 		<Unit filename="FestaClass.cpp" />
 		<Unit filename="FestaClass.h" />
 		<Unit filename="FornecedorClass.cpp" />
@@ -46,8 +48,14 @@
 		<Unit filename="FuncionariosClass.h" />
 		<Unit filename="funcaoCliente.cpp" />
 		<Unit filename="funcaoCliente.h" />
-		<Unit filename="funcaoFornecedor.cpp" />
-		<Unit filename="funcaoFornecedor.h" />
+		<Unit filename="funcaoFesta.cpp" />
+		<Unit filename="funcaoFesta.h" />
+		<Unit filename="funcaoFuncionarios.cpp" />
+		<Unit filename="funcaoFuncionarios.h" />
+		<Unit filename="helpers/DateHelper.cpp" />
+		<Unit filename="helpers/DateHelper.h" />
+		<Unit filename="helpers/ModelHelper.cpp" />
+		<Unit filename="helpers/ModelHelper.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="munit.c">
 			<Option compilerVar="CC" />

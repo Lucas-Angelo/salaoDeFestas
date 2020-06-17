@@ -1,0 +1,198 @@
+#include <iostream>
+#include <stdio.h>
+#include "munit.h"
+#include <locale.h>
+#include <ctype.h>
+
+using namespace std;
+#include <string>
+#include <time.h>
+#include "FuncionariosClass.h"
+#include "helpers/ModelHelper.h"
+#include <fstream>
+
+unsigned int gerarCodigo();
+string salvarNome();
+string salvarTelefone();
+string salvarFuncao();
+float salvarSalario();
+char salvarTipo();
+
+
+int funcaoFuncionarios(int op)
+{
+    setlocale(LC_ALL,"portuguese"); //Adicionar caracteres especiais
+    FuncionariosClass funcionarios; //Orientar a objeto por meio da classe
+
+
+    if(op==1) //Se a opção for para cadastrar
+    {
+
+    char confirmar;
+    cout << "\n>>> CADASTRAR FUNCIONÁRIO <<<" << endl;
+
+    do
+    {
+
+        funcionarios.codigo = gerarCodigo(); //Capturar código aleatório gerado.
+
+        funcionarios.nome = salvarNome(); //Receber nome digitado.
+
+        funcionarios.telefone = salvarTelefone(); //Receber telefone digitado.
+
+        funcionarios.funcao = salvarFuncao(); //Receber função do funcionário digitada.
+
+        funcionarios.salario = salvarSalario(); //Receber salário digitado.
+
+        funcionarios.tipo = salvarTipo(); //Receber tipo digitado.
+
+
+        cout << "\nDados do funcionário:" << endl;
+        printf("Código: %d\n", funcionarios.codigo);
+        cout << "Nome: " + funcionarios.nome << endl;
+        cout << "Telefone: " + funcionarios.telefone << endl;
+        cout << "Função: " + funcionarios.funcao << endl;
+        printf("Salário: %.2f\n", funcionarios.salario);
+        printf("Tipo: %c\n", funcionarios.tipo);
+
+        printf("\n---> Confirmar dados <---");
+        printf("\nC - Para confirmar");
+        printf("\nR - Para refazer");
+        printf("\nOs dados inseridos estão corretos? ");
+        cin >> confirmar;
+    } while (toupper(confirmar)!='C');
+
+    funcionarios.save(); //Salvar os dados do objeto classe funcionarios no arquivo
+
+    cout << "\n---> FUNCIONÁRIO CADASTRADO COM SUCESSO <---\n\n" << endl;
+
+    }
+
+    if(op==2)
+    {
+        printf("Procurando...");
+    }
+
+
+    return 0;
+}
+
+unsigned int gerarCodigo() //Função para gerar o código aleatório
+{
+    srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
+    unsigned int codigo;
+    codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
+    return codigo;
+}
+
+string salvarNome() //Função para pegar o nome.
+{
+    string nome;
+    cout << "Digite o nome? ";
+    getline(cin >> ws,nome); //Capturar string/linha(nome) do funcionário.
+    return nome;
+}
+
+string salvarTelefone() //Função para pegar o telefone do funcionário.
+{
+    int verificador=0, x, i;
+    string telefone;
+    cout << "Digite o telefone: ";
+    do
+    {
+        getline(cin >> ws,telefone);
+        for(i=0; i<telefone.length(); i++)
+        {
+            x=isdigit(telefone[i])?1:2; //1 para numerais, 2 para caracteres.
+            if(x==1)
+            {
+                verificador++; //Se for numeral, incrementa.
+            }
+        }
+        if(verificador<10)
+        {
+            cout << "Número de telefone inválido! [Mínimo de 10 números (DDD + número)]" << endl;
+            cout << "Digite um telefone válido: ";
+        }
+    } while (verificador<10); //Se tiver no mínimo 10 numerais, conclui.
+    return telefone;
+}
+
+string salvarFuncao() //Função para pegar a função do funcionário.
+{
+    string funcao;
+    cout << "Digite a função: ";
+    getline(cin >> ws,funcao);
+    return funcao;
+}
+
+float salvarSalario() //Função para pegar o salário do funcionário.
+{
+    float salario;
+    cout << "Digite o salário: ";
+    do
+    {
+        fflush(stdin);
+        scanf("%f", &salario);
+        if(salario < 0)
+        {
+            cout << "Salário inválido!\nDigite um salário positivo: ";
+
+        }
+    } while (salario < 0);
+    return salario;
+}
+
+char salvarTipo() //Função para pegar o tipo do funcionário.
+{
+    char tipo;
+    cout << "Menu de opções:";
+    cout << "\nT - Para temporário\nF - Para fixo";
+    cout << "\nDigite o tipo do funcionário? ";
+    do
+    {
+        fflush(stdin);
+        scanf(" %c", &tipo);
+        tipo = toupper(tipo);
+        if(tipo!='T' && tipo!='F')
+        {
+            cout << "Informe uma opção válida(T ou F): ";
+        }
+    } while (tipo!='T' && tipo!='F');
+
+    return tipo;
+}
+
+void procuraFuncionario() {
+    cout << "\n------------>PESQUISA DE FUNCIONÁRIOS<------------" << endl;
+    string nome;
+    cout << "Pesquisar por nome: ";
+    cin >> nome;
+    FuncionariosClass f;
+    int i=0;
+    ifstream inFile;
+    // Abrir o arquivo para leitura
+    inFile.open("files/funcionario.txt");
+    string line;
+    // Ler linha por linha até o fim do arquivo.
+    while (getline(inFile, line)) {
+        // Se encontrar o codigo do funcionario, quebrar a linha e definir os atributos da classe
+        if(ModelHelper::split(';', line, 1).find(nome) != std::string::npos) {
+          f.codigo = atoi(ModelHelper::split(';',line, 0).c_str());
+          f.nome = ModelHelper::split(';',line, 1);
+          f.telefone = atoi(ModelHelper::split(';',line, 2).c_str());
+          f.funcao = ModelHelper::split(';',line, 3);
+          f.salario = atof(ModelHelper::split(';',line, 4).c_str());
+          f.tipo = ModelHelper::split(';',line, 5)[0];
+          cout << "-------------------------------------------------------------" << endl;
+          cout << "Código: " << f.codigo << endl;
+          cout << "Nome: " << f.nome << endl;
+          cout << "Telefone: " << f.telefone << endl;
+          cout << "Função: " << f.funcao << endl;
+          cout << "Salário: " << f.salario << endl;
+          cout << "Tipo: " << f.tipo << endl;
+          cout << "-------------------------------------------------------------" << endl;
+        }
+    }
+    if(i == 0) cout << "------------------------\nNenhum item encontrado\n------------------------";
+}
