@@ -15,6 +15,8 @@ using namespace std;
 unsigned int receberCodigoCliente();
 unsigned int gerarCodigoFesta();
 int salvarConvid();
+string salvarData();
+int salvarDia();
 
 int funcaoFesta()
 {
@@ -39,10 +41,16 @@ int funcaoFesta()
 
             festa.qtdConvidados = salvarConvid();
 
+            festa.dt = salvarData();
+
+            festa.diaSemana = salvarDia();
+
 
             cout << "\nDados da festa:" << endl;
             cout << "Código: " << festa.codigo << endl;
-            cout << "Quantidade de convidados: " << festa.qtdConvidados << "\n" << endl;
+            cout << "Quantidade de convidados: " << festa.qtdConvidados << endl;
+            cout << "Data da festa: " << festa.dt << endl;
+            cout << "Dia da festa: " << festa.diaSemana << "\n" << endl;
 
             cout << "\n---> Confirmar dados <---" << endl;
             cout << "C - Para confirmar" << endl;
@@ -89,7 +97,7 @@ unsigned int gerarCodigoFesta() //Função para gerar o código aleatório da festa
     return codigo;
 }
 
-int salvarConvid()
+int salvarConvid() //Função para receber a quantidade de convidados
 {
     int qtd;
     cout << "\nQual a quantidade de convidados? ";
@@ -104,4 +112,31 @@ int salvarConvid()
     } while (qtd < 0);
 
     return qtd;
+}
+
+string salvarData()
+{
+    DateHelper dh; //Chamar classe DataHelper, que verifica se a data inserida é válida
+    cout << "Formato de data aceitável: dd/mm/aaaa" << endl;
+    cout << "Digite a data: ";
+    string data = dh.inputDate(); //Equivale ao cin da data
+    return data;
+}
+
+int salvarDia()
+{
+    int numeroDia;
+
+    cout << "Menu de opções para dia da semana: " << endl;
+    cout << "1 - Para Domingo" << endl;
+    cout << "2 - Para Segunda-feira" << endl;
+    cout << "3 - Para Terça-feira" << endl;
+    cout << "4 - Para Quarta-feira" << endl;
+    cout << "5 - Para Quinta-feira" << endl;
+    cout << "6 - Para Sexta-feira" << endl;
+    cout << "7 - Para Sábado" << endl;
+    cout << "Quando será? ";
+    cin >> numeroDia;
+
+    return numeroDia;
 }

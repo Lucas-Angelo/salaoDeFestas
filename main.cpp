@@ -12,7 +12,6 @@ using namespace std;
 #include "funcaoFesta.h"
 #include "funcaoFornecedor.h"
 
-#include "helpers/DateHelper.h"
 
 void printArt();
 
