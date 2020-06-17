@@ -20,6 +20,8 @@ int salvarDia();
 string salvarHoraInicio();
 string salvarHoraFim();
 int verificarHorarios(string horaInicio, string horaFim);
+string salvarHoraInicioSabado();
+string salvarHoraFimSabado();
 string salvarTema();
 
 int funcaoFesta()
@@ -50,6 +52,7 @@ int funcaoFesta()
 
             festa.diaSemana = salvarDia();
 
+            if(festa.diaSemana!=7)
             do
             {
                 festa.hora_inicio = salvarHoraInicio();
@@ -61,6 +64,18 @@ int funcaoFesta()
                     cout << "A festa pode ter no máximo 4 horas de duração!" << endl;
                 }
             } while (conferir==0);
+            else
+            {
+                do
+                {
+                    festa.hora_inicio = salvarHoraInicioSabado();
+                    festa.hora_fim = salvarHoraFimSabado();
+                    if(festa.hora_inicio=="Negado" || festa.hora_fim=="Negado")
+                    {
+                        cout << "Os horários de 12 às 16 e 18 às 22 estão reservados." << endl;
+                    }
+                } while (festa.hora_inicio=="Negado" || festa.hora_fim=="Negado");
+            }
 
             festa.tema = salvarTema();
 
@@ -158,7 +173,14 @@ int salvarDia()
     cout << "6 - Para Sexta-feira" << endl;
     cout << "7 - Para Sábado" << endl;
     cout << "Quando será? ";
-    cin >> numeroDia;
+    do
+    {
+        cin >> numeroDia;
+        if(numeroDia < 1 || numeroDia > 7)
+        {
+            cout << "Digite um número válido!" << endl;
+        }
+    } while (numeroDia < 1 || numeroDia > 7);
 
     return numeroDia;
 }
@@ -185,7 +207,6 @@ string salvarHoraFim()
 int verificarHorarios(string horaInicio, string horaFim)
 {
     //Início do sistema de verificar se a festa tem no máximo 4 horas de duração
-    int i;
     string inicioHora, inicioMinuto;
     string fimHora, fimMinuto;
 
@@ -201,12 +222,6 @@ int verificarHorarios(string horaInicio, string horaFim)
     somaFim = (atoi(fimHora.c_str()) * 60) + atoi(fimMinuto.c_str()); //Mesma conversão e transformação para as horas e minutos de fim.
     //Fim do sistema de verificar se a festa tem no máximo 4 horas de duração
 
-    //Início sistema para limitar horários do sábado
-
-    //FIM
-
-
-
     if((somaFim-somaInicio)<=240) //Se a difernça de minutos do início da festa, para o final, for menor que 240min(4 horas), festa aceita.
     {
         return 1;
@@ -216,7 +231,45 @@ int verificarHorarios(string horaInicio, string horaFim)
         return 0;
     }
 
+}
 
+string salvarHoraInicioSabado()
+{
+    string hora;
+    int verificarSabado=0;
+
+    DateHelper tm;
+    cout << "Digite o horário do inicio: ";
+    hora = tm.inputTime(); //Equivale ao cin da hora de fim, chamando a função para verificar se é válido
+
+    int horaInicioInt = horaInicioInt=atoi(hora.c_str());
+    if(horaInicioInt!=12 && horaInicioInt!=13 && horaInicioInt!=14 && horaInicioInt!=15 && horaInicioInt!=16)
+    {
+        return hora;
+    }
+    else
+    {
+        return "Negado";
+    }
+}
+
+string salvarHoraFimSabado()
+{
+    string hora;
+
+    DateHelper tm;
+    cout << "Digite o horário do fim: ";
+    hora = tm.inputTime(); //Equivale ao cin da hora de fim, chamando a função para verificar se é válido
+
+    int horaFimInt = horaFimInt=atoi(hora.c_str());
+    if(horaFimInt!=12 && horaFimInt!=13 && horaFimInt!=14 && horaFimInt!=15 && horaFimInt!=16)
+    {
+        return hora;
+    }
+    else
+    {
+        return "Negado";
+    }
 }
 
 string salvarTema()
