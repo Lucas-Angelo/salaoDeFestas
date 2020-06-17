@@ -52,7 +52,7 @@ int main()
             funcaoFuncionarios(op);
           break;
           case 3:
-            funcaoFornecedor ();
+            funcaoFornecedor (op);
           break;
           case 4:
             funcaoFesta();

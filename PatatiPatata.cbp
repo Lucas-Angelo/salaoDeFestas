@@ -50,6 +50,8 @@
 		<Unit filename="funcaoCliente.h" />
 		<Unit filename="funcaoFesta.cpp" />
 		<Unit filename="funcaoFesta.h" />
+		<Unit filename="funcaoFornecedor.cpp" />
+		<Unit filename="funcaoFornecedor.h" />
 		<Unit filename="funcaoFuncionarios.cpp" />
 		<Unit filename="funcaoFuncionarios.h" />
 		<Unit filename="helpers/DateHelper.cpp" />
