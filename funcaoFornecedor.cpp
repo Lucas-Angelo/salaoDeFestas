@@ -9,7 +9,7 @@ using namespace std;
 
 int funcaoFornecedor(){
 
-printf ("Hello world");
+
 
 return 0;
 }

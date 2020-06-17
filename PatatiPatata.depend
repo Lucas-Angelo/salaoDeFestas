@@ -150,3 +150,101 @@
 	<time.h>
 	"ClienteClass.h"
 
+1591658429 source:c:\users\josem\documents\meusprojetos\salaodefestas\clienteclass.cpp
+	"ClienteClass.h"
+
+1591658429 c:\users\josem\documents\meusprojetos\salaodefestas\clienteclass.h
+	<string>
+
+1592170877 source:c:\users\josem\documents\meusprojetos\salaodefestas\festaclass.cpp
+	"FestaClass.h"
+
+1592170877 c:\users\josem\documents\meusprojetos\salaodefestas\festaclass.h
+	<string>
+
+1592170877 source:c:\users\josem\documents\meusprojetos\salaodefestas\fornecedorclass.cpp
+	"FornecedorClass.h"
+
+1592170877 c:\users\josem\documents\meusprojetos\salaodefestas\fornecedorclass.h
+	<string>
+
+1592170877 source:c:\users\josem\documents\meusprojetos\salaodefestas\funcaocliente.cpp
+	<iostream>
+	<stdio.h>
+	"munit.h"
+	<string>
+	<time.h>
+	"ClienteClass.h"
+
+1591658429 c:\users\josem\documents\meusprojetos\salaodefestas\munit.h
+	<stdarg.h>
+	<stdlib.h>
+	<stdint.h>
+	<inttypes.h>
+	<string.h>
+
+1592171462 source:c:\users\josem\documents\meusprojetos\salaodefestas\funcaofornecedor.cpp
+	<iostream>
+	<stdio.h>
+	"munit.h"
+	<string>
+	<time.h>
+	"FornecedorClass.h"
+
+1592170877 source:c:\users\josem\documents\meusprojetos\salaodefestas\funcionariosclass.cpp
+	"FuncionariosClass.h"
+
+1592170877 c:\users\josem\documents\meusprojetos\salaodefestas\funcionariosclass.h
+	<string>
+
+1592171462 source:c:\users\josem\documents\meusprojetos\salaodefestas\main.cpp
+	<iostream>
+	<stdio.h>
+	"munit.h"
+	"funcaoFornecedor.h"
+	<string>
+	<time.h>
+	"ClienteClass.h"
+	"FornecedorClass.h"
+	"funcaoCliente.h"
+
+1592171462 c:\users\josem\documents\meusprojetos\salaodefestas\funcaofornecedor.h
+
+1592170877 c:\users\josem\documents\meusprojetos\salaodefestas\funcaocliente.h
+
+1591658429 source:c:\users\josem\documents\meusprojetos\salaodefestas\munit.c
+	<stdbool.h>
+	<limits.h>
+	<time.h>
+	<errno.h>
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+	<setjmp.h>
+	<locale.h>
+	<langinfo.h>
+	<strings.h>
+	<unistd.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<windows.h>
+	<io.h>
+	<fcntl.h>
+	"munit.h"
+	"../exact-int/exact-int.h"
+	<assert.h>
+	<limits.h>
+	<unistd.h>
+	<time.h>
+	<time.h>
+	<sys/time.h>
+	<windows.h>
+	<sys/time.h>
+	<sys/resource.h>
+	<CoreServices/CoreServices.h>
+	<mach/mach.h>
+	<mach/mach_time.h>
+	<time.h>
+	<stdatomic.h>
+
