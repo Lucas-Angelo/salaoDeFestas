@@ -38,8 +38,16 @@
 		</Compiler>
 		<Unit filename="ClienteClass.cpp" />
 		<Unit filename="ClienteClass.h" />
+		<Unit filename="FestaClass.cpp" />
+		<Unit filename="FestaClass.h" />
 		<Unit filename="FornecedorClass.cpp" />
 		<Unit filename="FornecedorClass.h" />
+		<Unit filename="FuncionariosClass.cpp" />
+		<Unit filename="FuncionariosClass.h" />
+		<Unit filename="funcaoCliente.cpp" />
+		<Unit filename="funcaoCliente.h" />
+		<Unit filename="funcaoFornecedor.cpp" />
+		<Unit filename="funcaoFornecedor.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="munit.c">
 			<Option compilerVar="CC" />
