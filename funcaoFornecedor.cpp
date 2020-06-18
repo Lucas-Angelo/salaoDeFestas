@@ -14,10 +14,52 @@ using namespace std;
 #include "helpers/ModelHelper.h"
 #include "FornecedorClass.h"
 
-unsigned int gerarCodigo();
+unsigned int geraCodigo();
 string salvaNome();
 string salvaTelefone();
 string salvaProduto();
+
+
+
+int funcaoFornecedor(){
+
+    setlocale(LC_ALL,"portuguese"); //Adicionar caracteres especiais
+    FornecedorClass fornecedor; //Orientar a objeto por meio da classe
+
+    char confirmar;
+    cout << "\n>>> CADASTRAR FORNECEDOR <<<" << endl;
+
+    do
+    {
+
+        fornecedor.codigo = geraCodigo(); //Capturar código aleatório gerado.
+
+        fornecedor.nome = salvaNome(); //Receber nome digitado.
+
+        fornecedor.telefone = salvaTelefone(); //Receber telefone digitado.
+
+        fornecedor.produto = salvaProduto(); //Receber função do fornecedor digitada.
+
+        cout << "\nDados do fornecedor:" << endl;
+        printf("Código: %d\n", fornecedor.codigo);
+        cout << "Nome: " + fornecedor.nome << endl;
+        cout << "Telefone: " + fornecedor.telefone << endl;
+        cout << "Produto Fornecido: " + fornecedor.produto << endl;
+
+        printf("\n---> Confirmar dados <---");
+        printf("\nC - Para confirmar");
+        printf("\nR - Para refazer");
+        printf("\nOs dados inseridos estão corretos? ");
+        cin >> confirmar;
+    } while (toupper(confirmar)!='C');
+
+    fornecedor.save(); //Salvar os dados do objeto classe funcionarios no arquivo
+
+    cout << "\n---> FORNECEDOR CADASTRADO COM SUCESSO <---\n\n" << endl;
+
+return 0;
+}
+
 
 unsigned int geraCodigo() //Função para gerar o código aleatório
 {
@@ -66,57 +108,7 @@ string salvaProduto()
     string produto;
     cout << "Digite o produto: ";
     getline(cin >> ws,produto);
-
-}
-
-
-int funcaoFornecedor(int op ){
-
-    setlocale(LC_ALL,"portuguese"); //Adicionar caracteres especiais
-    FornecedorClass fornecedor; //Orientar a objeto por meio da classe
-
-    if(op==1) //Se a opção for para cadastrar
-    {
-
-    char confirmar;
-    cout << "\n>>> CADASTRAR FORNECEDOR <<<" << endl;
-
-    do
-    {
-
-        fornecedor.codigo = geraCodigo(); //Capturar código aleatório gerado.
-
-        fornecedor.nome = salvaNome(); //Receber nome digitado.
-
-        fornecedor.telefone = salvaTelefone(); //Receber telefone digitado.
-
-        fornecedor.produto = salvaProduto(); //Receber função do fornecedor digitada.
-
-        cout << "\nDados do fornecedor:" << endl;
-        printf("Código: %d\n", fornecedor.codigo);
-        cout << "Nome: " + fornecedor.nome << endl;
-        cout << "Telefone: " + fornecedor.telefone << endl;
-        cout << "Produto Fornecido: " + fornecedor.produto << endl;
-
-        printf("\n---> Confirmar dados <---");
-        printf("\nC - Para confirmar");
-        printf("\nR - Para refazer");
-        printf("\nOs dados inseridos estão corretos? ");
-        cin >> confirmar;
-    } while (toupper(confirmar)!='C');
-
-    fornecedor.save(); //Salvar os dados do objeto classe funcionarios no arquivo
-
-    cout << "\n---> FORNECEDOR CADASTRADO COM SUCESSO <---\n\n" << endl;
-
-    }
-
-    if(op==2)
-    {
-        printf("Procurando...");
-    }
-
-return 0;
+    return produto;
 }
 
 
