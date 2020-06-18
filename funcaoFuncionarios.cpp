@@ -24,64 +24,64 @@ int funcaoFuncionarios()
 
 
     char confirmar;
-    cout << "\n>>> CADASTRAR FUNCION�RIO <<<" << endl;
+    cout << "\n>>> CADASTRAR FUNCIONÁRIO <<<" << endl;
 
     do
     {
 
-        funcionarios.codigo = gerarCodigo(); //Capturar c�digo aleat�rio gerado.
+        funcionarios.codigo = gerarCodigo(); //Capturar código aleatório gerado.
 
         funcionarios.nome = salvarNome(); //Receber nome digitado.
 
         funcionarios.telefone = salvarTelefone(); //Receber telefone digitado.
 
-        funcionarios.funcao = salvarFuncao(); //Receber fun��o do funcion�rio digitada.
+        funcionarios.funcao = salvarFuncao(); //Receber função do funcionário digitada.
 
-        funcionarios.salario = salvarSalario(); //Receber sal�rio digitado.
+        funcionarios.salario = salvarSalario(); //Receber salário digitado.
 
         funcionarios.tipo = salvarTipo(); //Receber tipo digitado.
 
 
-        cout << "\nDados do funcion�rio:" << endl;
-        cout << "C�digo: " << funcionarios.codigo << endl;
+        cout << "\nDados do funcionário:" << endl;
+        cout << "Código: " << funcionarios.codigo << endl;
         cout << "Nome: " << funcionarios.nome << endl;
         cout << "Telefone: " << funcionarios.telefone << endl;
-        cout << "Fun��o: " << funcionarios.funcao << endl;
-        cout << "Sal�rio: " << funcionarios.salario << endl;
+        cout << "Função: " << funcionarios.funcao << endl;
+        cout << "Salário: " << funcionarios.salario << endl;
         cout << "Tipo: " << funcionarios.tipo << "\n" << endl;
 
         cout << "\n---> Confirmar dados <---" << endl;
         cout << "C - Para confirmar" << endl;
         cout << "R - Para refazer" << endl;
-        cout << "Os dados inseridos est�o corretos? ";
+        cout << "Os dados inseridos estão corretos? ";
         cin >> confirmar;
     } while (toupper(confirmar)!='C');
 
     funcionarios.save(); //Salvar os dados do objeto classe funcionarios no arquivo
 
-    cout << "\n---> FUNCION�RIO CADASTRADO COM SUCESSO <---\n\n" << endl;
+    cout << "\n---> FUNCIONÁRIO CADASTRADO COM SUCESSO <---\n\n" << endl;
 
 
     return 0;
 }
 
-unsigned int gerarCodigo() //Fun��o para gerar o c�digo aleat�rio
+unsigned int gerarCodigo() //Função para gerar o código aleatório
 {
-    srand((unsigned int)time(NULL)); //S� deve ser chamada uma �nica vez, para configurar o gerador de c�digo aleat�rio(rand), baseado no time.
+    srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
     unsigned int codigo;
-    codigo = rand(); //Salvar o c�digo usando rand, com as configura��es do srand.
+    codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
     return codigo;
 }
 
-string salvarNome() //Fun��o para pegar o nome.
+string salvarNome() //Função para pegar o nome.
 {
     string nome;
     cout << "Digite o nome? ";
-    getline(cin >> ws,nome); //Capturar string/linha(nome) do funcion�rio.
+    getline(cin >> ws,nome); //Capturar string/linha(nome) do funcionário.
     return nome;
 }
 
-string salvarTelefone() //Fun��o para pegar o telefone do funcion�rio.
+string salvarTelefone() //Função para pegar o telefone do funcionário.
 {
     int verificador=0, x, i;
     string telefone;
@@ -99,44 +99,44 @@ string salvarTelefone() //Fun��o para pegar o telefone do funcion�rio.
         }
         if(verificador<10)
         {
-            cout << "N�mero de telefone inv�lido! [M�nimo de 10 n�meros (DDD + n�mero)]" << endl;
-            cout << "Digite um telefone v�lido: ";
+            cout << "Número de telefone inválido! [Mínimo de 10 números (DDD + número)]" << endl;
+            cout << "Digite um telefone válido: ";
         }
-    } while (verificador<10); //Se tiver no m�nimo 10 numerais, conclui.
+    } while (verificador<10); //Se tiver no minimo 10 numerais, conclui.
     return telefone;
 }
 
-string salvarFuncao() //Fun��o para pegar a fun��o do funcion�rio.
+string salvarFuncao() //Funcao para pegar a funcao do funcionario.
 {
     string funcao;
-    cout << "Digite a fun��o: ";
+    cout << "Digite a função: ";
     getline(cin >> ws,funcao);
     return funcao;
 }
 
-float salvarSalario() //Fun��o para pegar o sal�rio do funcion�rio.
+float salvarSalario() //Funcao para pegar o salario do funcionario.
 {
     float salario;
-    cout << "Digite o sal�rio: ";
+    cout << "Digite o salário: ";
     do
     {
         fflush(stdin);
         cin >> salario;
         if(salario < 0)
         {
-            cout << "Sal�rio inv�lido!\nDigite um sal�rio positivo: ";
+            cout << "Salário inválido!\nDigite um salário positivo: ";
 
         }
     } while (salario < 0);
     return salario;
 }
 
-char salvarTipo() //Fun��o para pegar o tipo do funcion�rio.
+char salvarTipo() //Funcao para pegar o tipo do funcionario.
 {
     char tipo;
-    cout << "Menu de op��es:";
-    cout << "\nT - Para tempor�rio\nF - Para fixo";
-    cout << "\nDigite o tipo do funcion�rio? ";
+    cout << "Menu de opções:";
+    cout << "\nT - Para temporário\nF - Para fixo";
+    cout << "\nDigite o tipo do funcionário? ";
     do
     {
         fflush(stdin);
@@ -144,7 +144,7 @@ char salvarTipo() //Fun��o para pegar o tipo do funcion�rio.
         tipo = toupper(tipo);
         if(tipo!='T' && tipo!='F')
         {
-            cout << "Informe uma op��o v�lida(T ou F): ";
+            cout << "Informe uma opção valida(T ou F): ";
         }
     } while (tipo!='T' && tipo!='F');
 
@@ -152,7 +152,7 @@ char salvarTipo() //Fun��o para pegar o tipo do funcion�rio.
 }
 
 void procuraFuncionario() {
-    cout << "\n------------>PESQUISA DE FUNCION�RIOS<------------" << endl;
+    cout << "\n------------>PESQUISA DE FUNCIONÁRIOS<------------" << endl;
     string nome;
     cout << "Pesquisar por nome: ";
     getline(cin >> ws, nome);
@@ -162,7 +162,7 @@ void procuraFuncionario() {
     // Abrir o arquivo para leitura
     inFile.open("files/funcionario.txt");
     string line;
-    // Ler linha por linha at� o fim do arquivo.
+    // Ler linha por linha até o fim do arquivo.
     while (getline(inFile, line)) {
         // Se encontrar o codigo do funcionario, quebrar a linha e definir os atributos da classe
         if((ModelHelper::split(';', line, 1)).find(nome) != std::string::npos) {
@@ -173,11 +173,11 @@ void procuraFuncionario() {
           f.salario = atof(ModelHelper::split(';',line, 4).c_str());
           f.tipo = ModelHelper::split(';',line, 5)[0];
           cout << "-------------------------------------------------------------" << endl;
-          cout << "C�digo: " << f.codigo << endl;
+          cout << "Código: " << f.codigo << endl;
           cout << "Nome: " << f.nome << endl;
           cout << "Telefone: " << f.telefone << endl;
-          cout << "Fun��o: " << f.funcao << endl;
-          cout << "Sal�rio: " << f.salario << endl;
+          cout << "Função: " << f.funcao << endl;
+          cout << "Salário: " << f.salario << endl;
           cout << "Tipo: " << f.tipo << endl;
           cout << "-------------------------------------------------------------" << endl;
         }
