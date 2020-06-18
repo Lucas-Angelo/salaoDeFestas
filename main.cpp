@@ -4,6 +4,7 @@
 #include "funcaoFuncionarios.h"
 #include "funcaoFesta.h"
 #include "funcaoFornecedor.h"
+#include "funcaoContrato.h"
 
 using namespace std;
 #include <string>
@@ -31,7 +32,7 @@ int main()
       if(op ==1)
       {
         printf("\n------------>OPCOES DE CADASTRO<------------\n");
-        printf("\n1-Cliente\n2-Funcionario\n3-Fornecedor\n4-Festa\n5-Voltar\nDigite o que gostaria de cadastrar: ");
+        printf("\n1-Cliente\n2-Funcionario\n3-Fornecedor\n4-Festa\n5-Contrato\n6-Voltar\nDigite o que gostaria de cadastrar: ");
         scanf("%d",&cad);
       }
       else if(op==2)
@@ -57,6 +58,9 @@ int main()
           case 4:
             funcaoFesta();
           break;
+          case 5:
+            funcaoContrato();
+            break;
           default:
             cad=0;
         }
