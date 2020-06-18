@@ -1,15 +1,12 @@
 #include <iostream>
-#include <stdio.h>
-#include "munit.h"
 #include <locale.h>
-
-using namespace std;
+#include <ctype.h>
 #include <string>
 #include <time.h>
-#include <cctype>
+using namespace std;
+
 #include "FuncionariosClass.h"
 #include "helpers/ModelHelper.h"
-#include <fstream>
 
 unsigned int gerarCodigo();
 string salvarNome();
@@ -19,81 +16,72 @@ float salvarSalario();
 char salvarTipo();
 
 
-int funcaoFuncionarios(int op)
+int funcaoFuncionarios()
 {
     setlocale(LC_ALL,"portuguese"); //Adicionar caracteres especiais
     FuncionariosClass funcionarios; //Orientar a objeto por meio da classe
 
 
-    if(op==1) //Se a opção for para cadastrar
-    {
 
     char confirmar;
-    cout << "\n>>> CADASTRAR FUNCIONÁRIO <<<" << endl;
+    cout << "\n>>> CADASTRAR FUNCIONï¿½RIO <<<" << endl;
 
     do
     {
 
-        funcionarios.codigo = gerarCodigo(); //Capturar código aleatório gerado.
+        funcionarios.codigo = gerarCodigo(); //Capturar cï¿½digo aleatï¿½rio gerado.
 
         funcionarios.nome = salvarNome(); //Receber nome digitado.
 
         funcionarios.telefone = salvarTelefone(); //Receber telefone digitado.
 
-        funcionarios.funcao = salvarFuncao(); //Receber função do funcionário digitada.
+        funcionarios.funcao = salvarFuncao(); //Receber funï¿½ï¿½o do funcionï¿½rio digitada.
 
-        funcionarios.salario = salvarSalario(); //Receber salário digitado.
+        funcionarios.salario = salvarSalario(); //Receber salï¿½rio digitado.
 
         funcionarios.tipo = salvarTipo(); //Receber tipo digitado.
 
 
-        cout << "\nDados do funcionário:" << endl;
-        printf("Código: %d\n", funcionarios.codigo);
-        cout << "Nome: " + funcionarios.nome << endl;
-        cout << "Telefone: " + funcionarios.telefone << endl;
-        cout << "Função: " + funcionarios.funcao << endl;
-        printf("Salário: %.2f\n", funcionarios.salario);
-        printf("Tipo: %c\n", funcionarios.tipo);
+        cout << "\nDados do funcionï¿½rio:" << endl;
+        cout << "Cï¿½digo: " << funcionarios.codigo << endl;
+        cout << "Nome: " << funcionarios.nome << endl;
+        cout << "Telefone: " << funcionarios.telefone << endl;
+        cout << "Funï¿½ï¿½o: " << funcionarios.funcao << endl;
+        cout << "Salï¿½rio: " << funcionarios.salario << endl;
+        cout << "Tipo: " << funcionarios.tipo << "\n" << endl;
 
-        printf("\n---> Confirmar dados <---");
-        printf("\nC - Para confirmar");
-        printf("\nR - Para refazer");
-        printf("\nOs dados inseridos estão corretos? ");
+        cout << "\n---> Confirmar dados <---" << endl;
+        cout << "C - Para confirmar" << endl;
+        cout << "R - Para refazer" << endl;
+        cout << "Os dados inseridos estï¿½o corretos? ";
         cin >> confirmar;
     } while (toupper(confirmar)!='C');
 
     funcionarios.save(); //Salvar os dados do objeto classe funcionarios no arquivo
 
-    cout << "\n---> FUNCIONÁRIO CADASTRADO COM SUCESSO <---\n\n" << endl;
-
-    }
-
-    if(op==2)
-    {
-        printf("Procurando...");
-    }
+    cout << "\n---> FUNCIONï¿½RIO CADASTRADO COM SUCESSO <---\n\n" << endl;
 
 
     return 0;
 }
 
-unsigned int gerarCodigo() //Função para gerar o código aleatório
+unsigned int gerarCodigo() //Funï¿½ï¿½o para gerar o cï¿½digo aleatï¿½rio
 {
-    srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
+    srand((unsigned int)time(NULL)); //Sï¿½ deve ser chamada uma ï¿½nica vez, para configurar o gerador de cï¿½digo aleatï¿½rio(rand), baseado no time.
     unsigned int codigo;
-    codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
+    codigo = rand(); //Salvar o cï¿½digo usando rand, com as configuraï¿½ï¿½es do srand.
     return codigo;
 }
 
-string salvarNome() //Função para pegar o nome.
+string salvarNome() //Funï¿½ï¿½o para pegar o nome.
 {
     string nome;
     cout << "Digite o nome? ";
-    getline(cin >> ws,nome); //Capturar string/linha(nome) do funcionário.
+    getline(cin >> ws,nome); //Capturar string/linha(nome) do funcionï¿½rio.
     return nome;
 }
 
-string salvarTelefone() //Função para pegar o telefone do funcionário.
+string salvarTelefone() //Funï¿½ï¿½o para pegar o telefone do funcionï¿½rio.
 {
     int verificador=0, x, i;
     string telefone;
@@ -111,52 +99,52 @@ string salvarTelefone() //Função para pegar o telefone do funcionário.
         }
         if(verificador<10)
         {
-            cout << "Número de telefone inválido! [Mínimo de 10 números (DDD + número)]" << endl;
-            cout << "Digite um telefone válido: ";
+            cout << "Nï¿½mero de telefone invï¿½lido! [Mï¿½nimo de 10 nï¿½meros (DDD + nï¿½mero)]" << endl;
+            cout << "Digite um telefone vï¿½lido: ";
         }
-    } while (verificador<10); //Se tiver no mínimo 10 numerais, conclui.
+    } while (verificador<10); //Se tiver no mï¿½nimo 10 numerais, conclui.
     return telefone;
 }
 
-string salvarFuncao() //Função para pegar a função do funcionário.
+string salvarFuncao() //Funï¿½ï¿½o para pegar a funï¿½ï¿½o do funcionï¿½rio.
 {
     string funcao;
-    cout << "Digite a função: ";
+    cout << "Digite a funï¿½ï¿½o: ";
     getline(cin >> ws,funcao);
     return funcao;
 }
 
-float salvarSalario() //Função para pegar o salário do funcionário.
+float salvarSalario() //Funï¿½ï¿½o para pegar o salï¿½rio do funcionï¿½rio.
 {
     float salario;
-    cout << "Digite o salário: ";
+    cout << "Digite o salï¿½rio: ";
     do
     {
         fflush(stdin);
-        scanf("%f", &salario);
+        cin >> salario;
         if(salario < 0)
         {
-            cout << "Salário inválido!\nDigite um salário positivo: ";
+            cout << "Salï¿½rio invï¿½lido!\nDigite um salï¿½rio positivo: ";
 
         }
     } while (salario < 0);
     return salario;
 }
 
-char salvarTipo() //Função para pegar o tipo do funcionário.
+char salvarTipo() //Funï¿½ï¿½o para pegar o tipo do funcionï¿½rio.
 {
     char tipo;
-    cout << "Menu de opções:";
-    cout << "\nT - Para temporário\nF - Para fixo";
-    cout << "\nDigite o tipo do funcionário? ";
+    cout << "Menu de opï¿½ï¿½es:";
+    cout << "\nT - Para temporï¿½rio\nF - Para fixo";
+    cout << "\nDigite o tipo do funcionï¿½rio? ";
     do
     {
         fflush(stdin);
-        scanf(" %c", &tipo);
+        cin >> tipo;
         tipo = toupper(tipo);
         if(tipo!='T' && tipo!='F')
         {
-            cout << "Informe uma opção válida(T ou F): ";
+            cout << "Informe uma opï¿½ï¿½o vï¿½lida(T ou F): ";
         }
     } while (tipo!='T' && tipo!='F');
 
@@ -164,7 +152,7 @@ char salvarTipo() //Função para pegar o tipo do funcionário.
 }
 
 void procuraFuncionario() {
-    cout << "\n------------>PESQUISA DE FUNCIONÁRIOS<------------" << endl;
+    cout << "\n------------>PESQUISA DE FUNCIONï¿½RIOS<------------" << endl;
     string nome;
     cout << "Pesquisar por nome: ";
     getline(cin >> ws, nome);
@@ -174,7 +162,7 @@ void procuraFuncionario() {
     // Abrir o arquivo para leitura
     inFile.open("files/funcionario.txt");
     string line;
-    // Ler linha por linha até o fim do arquivo.
+    // Ler linha por linha atï¿½ o fim do arquivo.
     while (getline(inFile, line)) {
         // Se encontrar o codigo do funcionario, quebrar a linha e definir os atributos da classe
         if((ModelHelper::split(';', line, 1)).find(nome) != std::string::npos) {
@@ -185,11 +173,11 @@ void procuraFuncionario() {
           f.salario = atof(ModelHelper::split(';',line, 4).c_str());
           f.tipo = ModelHelper::split(';',line, 5)[0];
           cout << "-------------------------------------------------------------" << endl;
-          cout << "Código: " << f.codigo << endl;
+          cout << "Cï¿½digo: " << f.codigo << endl;
           cout << "Nome: " << f.nome << endl;
           cout << "Telefone: " << f.telefone << endl;
-          cout << "Função: " << f.funcao << endl;
-          cout << "Salário: " << f.salario << endl;
+          cout << "Funï¿½ï¿½o: " << f.funcao << endl;
+          cout << "Salï¿½rio: " << f.salario << endl;
           cout << "Tipo: " << f.tipo << endl;
           cout << "-------------------------------------------------------------" << endl;
         }

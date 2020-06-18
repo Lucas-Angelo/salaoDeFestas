@@ -1,26 +1,29 @@
 #include <iostream>
 #include <stdio.h>
+#include <string>
+#include <time.h>
+
+using namespace std;
+
 #include "munit.h"
+
+#include "funcaoCliente.h"
 #include "funcaoFuncionarios.h"
 #include "funcaoFesta.h"
 #include "funcaoFornecedor.h"
 
-using namespace std;
-#include <string>
-#include <time.h>
-#include "ClienteClass.h"
-#include "FornecedorClass.h"
-#include "funcaoCliente.h"
-#include "helpers/DateHelper.h"
 
-using namespace std;
 void printArt();
 
 int main()
 {
     int op=0,cad,pes;
     setlocale(LC_ALL,"portuguese");
+
+
+
     printArt();
+
     while(op!=3)
     {
       printf("\n---------------->MENU DE OPCOES<----------------\n");
@@ -46,16 +49,16 @@ int main()
           switch(cad)
           {
           case 1:
-            funcaoCliente();
+            funcaoCliente(); //Cadastrar e salvar dados do cliente.
           break;
           case 2:
-            funcaoFuncionarios(op);
+            funcaoFuncionarios(); //Cadastrar e salvar dados do funcionário.
           break;
           case 3:
-            funcaoFornecedor ();
+            funcaoFornecedor (); //Cadastrar e salvar dados do fornecedor.
           break;
           case 4:
-            funcaoFesta();
+            funcaoFesta(); //Cadastrar e salvar dados da festa.
           break;
           default:
             cad=0;
