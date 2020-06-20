@@ -15,7 +15,7 @@ using namespace std;
 unsigned int receberCodigoCliente();
 unsigned int gerarCodigoFesta();
 int salvarConvid();
-string salvarData();
+string saveDates();
 int salvarDia();
 string salvarHoraInicio();
 string salvarHoraFim();
@@ -48,7 +48,7 @@ int funcaoFesta()
 
             festa.qtdConvidados = salvarConvid();
 
-            festa.dt = salvarData();
+            festa.dt = saveDates();
 
             festa.diaSemana = salvarDia();
 
@@ -151,7 +151,7 @@ int salvarConvid() //Função para receber a quantidade de convidados
     return qtd;
 }
 
-string salvarData()
+string saveDates()
 {
     DateHelper dh; //Chamar classe DataHelper, que verifica se a data inserida é válida
     cout << "Formato de data aceitável: dd/mm/aaaa" << endl;

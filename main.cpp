@@ -38,7 +38,7 @@ int main() {
         funcaoCliente();
         break;
       case 2:
-        funcaoFuncionarios(op, cad);
+        funcaoFuncionarios();
         break;
       case 3:
         funcaoFornecedor();
@@ -63,7 +63,7 @@ int main() {
       case 2:
         procuraFuncionario();
         break;
-      case 3:        
+      case 3:
         procuraFornecedor();
         break;
       case 4:

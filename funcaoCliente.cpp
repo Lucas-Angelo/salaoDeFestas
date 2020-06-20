@@ -24,7 +24,7 @@ int funcaoCliente()
     char c='a';
     while(toupper(c)!='C')
     {
-        /*cout << "\n------------>CADASTRO DE CLIENTE<------------" << endl;
+        cout << "\n------------>CADASTRO DE CLIENTE<------------" << endl;
         cli.codigo = gerarCodigos();
 
         cout << "\nDigite o nome: ";
@@ -33,13 +33,14 @@ int funcaoCliente()
         cout <<"Digite o endereço: ";
         getline(cin >> ws,cli.endereco);//ws pega a linha inteira
 
-        cli.telefone = salvarTelefones();*/
+        cli.telefone = salvarTelefones();
         cli.dtNascimento = salvarData();
 
-        /*cout << "\nDados do Cliente:" << endl;
+        cout << "\n\nDADOS DO CLIENTE:\n" << endl;
         printf("Código: %d\n", cli.codigo);
         cout << "Nome: " + cli.nome << endl;
-        cout << "Telefone: " << cli.telefone << endl;*/
+        cout << "Endereço: " << cli.endereco << endl;
+        cout << "Telefone: " << cli.telefone << endl;
         cout << "Data: " + cli.dtNascimento << endl;
 
         printf("\n--->CONFIRMAR DADOS<---");
