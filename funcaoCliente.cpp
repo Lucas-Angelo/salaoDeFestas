@@ -50,6 +50,8 @@ int funcaoCliente()
     }
     cli.save();
 
+    cli.save();
+
     return 0;
 }
 
@@ -57,7 +59,7 @@ void procuraCliente() {
     cout << "\n------------>PESQUISA DE CLIENTES<------------" << endl;
     string nome;
     cout << "Pesquisar por nome: ";
-    cin >> nome;
+    getline(cin >> ws, nome);
     ClienteClass c;
     int i=0;
     ifstream inFile;
@@ -80,8 +82,10 @@ void procuraCliente() {
             cout << "Data de Nascimento: " << c.dtNascimento << endl;
             cout << "Telefone: " << c.telefone << endl;
             cout << "-------------------------------------------------------------" << endl;
+            i++;
         }
     }
+    if(i == 0) cout << "------------------------\nNenhum item encontrado\n------------------------";
 }
 unsigned int gerarCodigos()
 {

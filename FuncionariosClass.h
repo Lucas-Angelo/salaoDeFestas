@@ -41,7 +41,7 @@ class FuncionariosClass
                 if(ModelHelper::split(';', line, 0) ==  cd) {
                     f.codigo = atoi(ModelHelper::split(';',line, 0).c_str());
                     f.nome = ModelHelper::split(';',line, 1);
-                    f.telefone = atoi(ModelHelper::split(';',line, 2).c_str());
+                    f.telefone = ModelHelper::split(';',line, 2);
                     f.funcao = ModelHelper::split(';',line, 3);
                     f.salario = atof(ModelHelper::split(';',line, 4).c_str());
                     f.tipo = ModelHelper::split(';',line, 5)[0];

@@ -7,6 +7,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <sstream>
 
 class DateHelper
 {
@@ -49,11 +50,19 @@ class DateHelper
                         is_valid = 0;
                 }
                 if(is_valid == 0)
-                    cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl;
+                    cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl << "Digite a hora: ";
             } while(is_valid == 0);
 
-            //return to_string(day)  + "/" + to_string(month) + "/" + to_string(year);
-            return "";
+            stringstream ss, ss2, ss3;
+            string sd,sm,sy;
+            ss<<day;
+            ss>>sd;
+            ss2<<month;
+            ss2>>sm;
+            ss3<<year;
+            ss3>>sy;
+
+            return sd + "/" + sm + "/" + sy;
         }
         string inputTime(){
             int hour, minute, valid;
@@ -68,9 +77,18 @@ class DateHelper
                     valid = 0;
 
                 if(valid == 0)
-                    cout << "Hora Invalida! Digite no formato HH:mm" << endl;
+                    cout << "Hora Invalida! Digite no formato HH:mm" << endl << "Digite a hora: ";
             } while(valid == 0);
-            return "S";
+
+            stringstream ss1, ss2;
+            string sh, sm;
+            ss1<<hour;
+            ss1>>sh;
+            ss2<<minute;
+            ss2>>sm;
+
+
+            return sh + ":" + sm;
         }
 
     protected:

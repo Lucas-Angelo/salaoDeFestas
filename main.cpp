@@ -1,15 +1,17 @@
 #include <iostream>
 #include <stdio.h>
-#include "munit.h"
-#include "funcaoFuncionarios.h"
-#include "funcaoFornecedor.h"
-
-using namespace std;
 #include <string>
 #include <time.h>
-#include "ClienteClass.h"
-#include "FornecedorClass.h"
+
+using namespace std;
+
+#include "munit.h"
+
 #include "funcaoCliente.h"
+#include "funcaoFuncionarios.h"
+#include "funcaoFesta.h"
+#include "funcaoFornecedor.h"
+
 
 
 using namespace std;
@@ -42,7 +44,7 @@ int main() {
         funcaoFornecedor();
         break;
       case 4:
-        //festa
+        funcaoFesta();
         break;
 
       default:
@@ -61,9 +63,8 @@ int main() {
       case 2:
         procuraFuncionario();
         break;
-      case 3:
-        //procurar fornecedor
-        funcaoFornecedor();
+      case 3:        
+        procuraFornecedor();
         break;
       case 4:
         //procurar festa
