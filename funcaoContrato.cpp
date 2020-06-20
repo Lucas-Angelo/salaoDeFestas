@@ -8,6 +8,7 @@
 #include <time.h>
 #include "ContratoClass.h"
 #include "FestaClass.h"
+#include "helpers/ModelHelper.h"
 using namespace std;
 
 int funcaoContrato()
@@ -23,8 +24,15 @@ int funcaoContrato()
 
     do  //pede um codigo de festa ate encontrar um que existe e que o usuario confirme seus dados
     {
-        cout << "Codigo da festa que deseja gerar contrato: ";
+        cout << "Codigo da festa que deseja gerar contrato (digite 0 para cancelar operação): ";
         cin >> contrato.codigo_festa;
+
+        if (contrato.codigo_festa==0)
+        {
+            cout << "\n\n!!!-- Operação Cancelada --!!!\n\n";
+            return 0;
+        }
+
         festa = festa.get(contrato.codigo_festa);
 
         if (festa.codigo!=contrato.codigo_festa)    //
@@ -93,8 +101,15 @@ int funcaoContrato()
         cout << "|3 vezes  |      2%|\n" ;
         cout << "|4 ou +   |      0%|\n" ;
         cout << "|_________|________|\n" ;
+
         cout << "\nEm quantas vezes deseja pagar? ";
-        cin  >> contrato.formaPagamento;
+        do
+        {
+            cin  >> contrato.formaPagamento;
+            if (contrato.formaPagamento<'1'||contrato.formaPagamento>'9')
+                cout << "INVALIDO (formas de pagamento validas : 1 a 9 vezes)";
+        }while (contrato.formaPagamento<'1'||contrato.formaPagamento>'9');
+
 
         switch (contrato.formaPagamento) //calculo do novo valor a pagar
         {
@@ -114,7 +129,7 @@ int funcaoContrato()
         contrato.valor_final=contrato.valor_total-contrato.desconto;
 
 
-        contrato.status='a'; //status = "a pagar"
+        contrato.status='A'; //status = "a pagar"
 
         //confirmação do contrato
         cout << "\nConfirmacao do contrato:" << endl;
@@ -132,8 +147,109 @@ int funcaoContrato()
         cin >> confirmar;
     } while (toupper(confirmar)!='C');
     contrato.save();
+    return 0;
 }
+int atualizaContrato()
+{
+    ContratoClass contrato;
+    int i, prossiga=0, linha;
+    char confirmar;
+    string line;
 
+    cout << "\n>>> ATUALIZAÇÃO DE CONTRATO <<<\n";
+
+
+    do  //pede um codigo de contrato ate encontrar um que existe e que o usuario confirme seus dados
+    {
+        cout << "Codigo do contrato que deseja atualizar (digite 0 para cancelar operação): ";
+        cin >> contrato.codigo;
+
+        if (contrato.codigo==0)
+        {
+            cout << "\n\n!!!-- Operação Cancelada --!!!\n\n";
+            return 0;
+        }
+
+        contrato = contrato.get(contrato.codigo);
+
+        if (contrato.codigo==NULL)    //
+            cout << "!!!Codigo de contrato nao registrado!!!\n";
+        else    //Confirma dados da contrato para prosseguir com cadastro de contrato
+        {
+            //confirmação do contrato
+            cout << "\nConfirmacao do contrato:" << endl;
+            printf("Código: %d\n", contrato.codigo);
+            cout << "Código da festa: " << contrato.codigo_festa << endl;
+            cout << "Pagamento em " << contrato.formaPagamento << " vez(es)" << endl;
+            cout << "Valor Total: " << contrato.valor_total << endl;
+            cout << "Desconto: " << contrato.desconto << endl;
+            cout << "Valor com Desconto: " << contrato.valor_final << endl;
+            cout << "Status: " << contrato.status << endl;
+
+
+            printf("\n---> Confirmar dados <---");
+            printf("\nC - Para confirmar");
+            printf("\nR - Para buscar outro contrato");
+            printf("\nOs dados inseridos estão corretos? ");
+            cin >> confirmar;
+            if (toupper(confirmar)=='C')
+                prossiga=1;
+        }
+
+    }while (!prossiga); //repete até encontrar codigo de contrato que existe
+
+
+    do
+    {
+        cout << "\nAtualizar o contrato para pago ('p') ou para cancelado ('c'): ";
+        cin >> contrato.status;
+        contrato.status = toupper(contrato.status);
+        if (contrato.status!='P'&&contrato.status!='C')
+            cout << "!!!Invalido!!!\n";
+    }while (contrato.status!='P'&&contrato.status!='C');
+
+
+    ifstream fileContrato;
+    ofstream fileNovo;
+
+    fileContrato.open("files/contract.txt");
+
+    stringstream ss;
+    string cd;
+    ss << contrato.codigo;
+    ss >> cd;
+    for (i=1, linha=0; getline(fileContrato,line) && linha!=i ;i++)       //descobre qual a linha do contrato selecionado
+    {
+        if (ModelHelper::split(';', line, 0) == cd)
+            linha=i;    //quando o codigo corresponde, armazena sua linha e sai do for (linha==i)
+    }
+
+    fileNovo.open("files/novo.txt");
+    fileContrato.close();
+    fileContrato.open("files/contract.txt");;
+    for (i=1;getline(fileContrato,line);i++)
+    {
+        if (i==linha)
+        {
+            fileNovo << contrato.codigo << ";" << contrato.valor_total << ";"  << contrato.desconto << ";" << contrato.valor_final  << ";" << contrato.formaPagamento  << ";" << contrato.status  << ";" << contrato.codigo_festa << "\n";
+        }
+        else
+        {
+            fileNovo << line << endl;
+        }
+    }
+
+    fileContrato.close();
+    fileNovo.close();
+
+    remove ("files/contract.txt");
+    rename ("files/novo.txt","files/contract.txt");
+
+    cout << "\n\n---- Contrato " << contrato.codigo << " Atualizado ----\n\n";
+
+
+
+}
 
 unsigned int gerarCodigoo() //Função para gerar o código aleatório
 {
