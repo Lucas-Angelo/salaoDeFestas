@@ -23,7 +23,7 @@ int funcaoRelatorio()
     int op=0;
     setlocale(LC_ALL,"portuguese");
     cout <<"\n---------------->RELATORIO<-------------------"  << endl;
-    cout <<"\n1-Cliente\n2-Data\nDeseja pesquisar por: ";
+    cout <<"\n1-Cliente\n2-Data\n3-Voltar\nDeseja pesquisar por: ";
     cin >> op;
 
     if(op==1)

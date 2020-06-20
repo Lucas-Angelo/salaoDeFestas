@@ -76,7 +76,9 @@ int main() {
       }
     }
     else if(op ==3)
-        funcaoRelatorio();
+    funcaoRelatorio();
+
+
   }
     return 0;
 }
