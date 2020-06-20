@@ -11,6 +11,7 @@ using namespace std;
 #include "funcaoFuncionarios.h"
 #include "funcaoFesta.h"
 #include "funcaoFornecedor.h"
+#include "funcaoRelatorio.h"
 
 
 
@@ -21,10 +22,10 @@ int main() {
   int op = 0, cad;
   setlocale(LC_ALL, "portuguese");
   printArt();
-  while (op != 3)
+  while (op != 4)
     {
     cout << "\n---------------->MENU DE OPCOES<----------------" << endl;
-    cout << "\n1-Cadastrar\n2-Pesquisar\n3-Sair\nDigite uma opcao: ";
+    cout << "\n1-Cadastrar\n2-Pesquisar\n3-Relatorio\n4-Sair\nDigite uma opcao: ";
     cin >> op;
     cad = 0;
     if (op == 1)
@@ -50,7 +51,8 @@ int main() {
       default:
         cad = 0;
       }
-    } else if (op == 2)
+    }
+    else if (op == 2)
     {
       cout << "\n------------>OPCOES DE PESQUISA<------------" << endl;
       cout << "\n1-Cliente\n2-Funcionario\n3-Fornecedor\n4-Voltar\nDigite o que gostaria de pesquisar: ";
@@ -73,6 +75,8 @@ int main() {
         cad = 0;
       }
     }
+    else if(op ==3)
+        funcaoRelatorio();
   }
     return 0;
 }
