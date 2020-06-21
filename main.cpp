@@ -23,7 +23,7 @@ int main() {
   int op = 0, cad;
   setlocale(LC_ALL, "portuguese");
   printArt();
-  while (op != 4)
+  while (op != 5)
     {
     cout << "\n---------------->MENU DE OPCOES<----------------" << endl;
     cout << "\n1-Cadastrar\n2-Pesquisar\n3-Atualizar contrato\n4-Relatórios\n5-Sair\nDigite uma opcao: ";
@@ -77,7 +77,7 @@ int main() {
       }
     }
     else if (op==3)
-    {      
+    {
       atualizaContrato();
     }
     else if(op ==4)

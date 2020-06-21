@@ -12,7 +12,7 @@ using namespace std;
 #include <fstream>
 #include "helpers/DateHelper.h"
 
-string salvarData();
+string salvarDatas();
 unsigned int gerarCodigos();
 unsigned long salvarTelefones();// unsigned so pega valor positivo
 int funcaoCliente()
@@ -34,7 +34,7 @@ int funcaoCliente()
         getline(cin >> ws,cli.endereco);//ws pega a linha inteira
 
         cli.telefone = salvarTelefones();
-        cli.dtNascimento = salvarData();
+        cli.dtNascimento = salvarDatas();
 
         cout << "\n\nDADOS DO CLIENTE:\n" << endl;
         printf("Código: %d\n", cli.codigo);
@@ -50,9 +50,6 @@ int funcaoCliente()
         cin >> c;
     }
     cli.save();
-
-    cli.save();
-
     return 0;
 }
 
@@ -97,17 +94,17 @@ unsigned int gerarCodigos()
 }
 unsigned long salvarTelefones()
 {
-    unsigned int telefone;
+    unsigned int telefone=0;
+    do
+    {
     cout << "Digite o telefone: ";
     cin >> telefone;
-    while(telefone < 1000000000 || telefone > 9999999999 )
-    {
-    cout << "Digite um telefone valido: " ;
-    cin >> telefone;
     }
+    while(telefone < 1000000000 || telefone > 9999999999 );
+
     return telefone;
 }
-string salvarData()
+string salvarDatas()
 {
     DateHelper dh; //Chamar classe DataHelper, que verifica se a data inserida é válida
     cout << "Digite a data(dd/mm/AAAA): ";
