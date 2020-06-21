@@ -17,7 +17,7 @@ unsigned int receberCodigoCliente();
 unsigned int gerarCodigoFesta();
 int salvarConvid();
 string salvarData();
-int salvarDia();
+int salvarDia(string date);
 string salvarHoraInicio();
 string salvarHoraFim();
 int verificarHorarios(string horaInicio, string horaFim);
@@ -51,7 +51,7 @@ int funcaoFesta()
 
             festa.dt = salvarData();
 
-            festa.diaSemana = salvarDia();
+            festa.diaSemana = salvarDia(festa.dt);
 
             if(festa.diaSemana!=7)
             do
@@ -79,13 +79,13 @@ int funcaoFesta()
             }
 
             festa.tema = salvarTema();
-
+            string weekNames[7] = { "Domingo", "Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado" };
 
             cout << "\nDados da festa:" << endl;
             cout << "Código: " << festa.codigo << endl;
             cout << "Quantidade de convidados: " << festa.qtdConvidados << endl;
             cout << "Data da festa: " << festa.dt << endl;
-            cout << "Dia da festa: " << festa.diaSemana << endl;
+            cout << "Dia da festa: " << weekNames[festa.diaSemana - 1] << endl;
             cout << "Hora do início: " << festa.hora_inicio << endl;
             cout << "Hora do fim: " << festa.hora_fim << endl;
             cout << "Tema: " << festa.tema << "\n" << endl;
@@ -101,12 +101,11 @@ int funcaoFesta()
 
 }
 
-unsigned int receberCodigoCliente()
-{
+unsigned int receberCodigoCliente() {
     string nome;
     int i, codigo;
     cout << "\nInforme o nome do cliente(Digite 0 para sair): ";
-    cin >> nome;
+    getline(cin >> ws,nome);
     if(nome == "0") return 0;
     vector<ClienteClass> c = ClienteClass::getByName(nome);
     for (i=0; i<c.size(); i++) {
@@ -161,8 +160,7 @@ int salvarConvid() //Função para receber a quantidade de convidados
     return qtd;
 }
 
-string salvarData()
-{
+string salvarData() {
     DateHelper dh; //Chamar classe DataHelper, que verifica se a data inserida é válida
     cout << "Formato de data aceitável: dd/mm/aaaa" << endl;
     cout << "Digite a data: ";
@@ -170,29 +168,33 @@ string salvarData()
     return data;
 }
 
-int salvarDia()
-{
-    int numeroDia;
+int salvarDia(string date) {
+    int d = atoi(date.substr(0, 2).c_str()); //22/06/2020
+    int m = atoi(date.substr(3, 2).c_str());
+    int y = atoi(date.substr(6, 4).c_str());
 
-    cout << "Menu de opções para dia da semana: " << endl;
-    cout << "1 - Para Domingo" << endl;
-    cout << "2 - Para Segunda-feira" << endl;
-    cout << "3 - Para Terça-feira" << endl;
-    cout << "4 - Para Quarta-feira" << endl;
-    cout << "5 - Para Quinta-feira" << endl;
-    cout << "6 - Para Sexta-feira" << endl;
-    cout << "7 - Para Sábado" << endl;
-    cout << "Quando será? ";
-    do
-    {
-        cin >> numeroDia;
-        if(numeroDia < 1 || numeroDia > 7)
-        {
-            cout << "Digite um número válido!" << endl;
-        }
-    } while (numeroDia < 1 || numeroDia > 7);
-
-    return numeroDia;
+	int year = 1000, isLeap = 0, daysFromStart = 0, weekday = 3 ,i;
+	while(year <= y) {
+		isLeap = 0;
+		if(weekday > 6)
+			weekday = abs(7 - weekday);
+		if((year % 4==0 && year % 100 != 0) || year % 400 == 0) { //Leap Year
+			weekday += 2;
+			isLeap = 1;
+		} else //Normal Year
+			weekday++;
+		year++;
+	}
+	if(isLeap == 1) weekday--;
+	for(i=0; i< m - 1;i++) {
+		if(i == 1) daysFromStart += (isLeap == 1) ? 29: 28;
+		else if(i == 3 || i == 5 || i == 8 || i == 10) daysFromStart += 30;
+		else daysFromStart += 31;
+	}
+	daysFromStart += d-2;
+	for(i = 0; i<daysFromStart; i++)
+		weekday = (weekday == 6)? 0: weekday + 1;
+	return  (weekday + 1);
 }
 
 string salvarHoraInicio()
