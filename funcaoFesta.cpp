@@ -10,6 +10,7 @@ using namespace std;
 #include "helpers/DateHelper.h"
 
 #include "munit.h"
+#include <vector>
 
 
 unsigned int receberCodigoCliente();
@@ -102,28 +103,37 @@ int funcaoFesta()
 
 unsigned int receberCodigoCliente()
 {
-    unsigned int codigo;
-    ClienteClass verificarExistencia;
-    cout << "\nInforme o código do cliente(Digite 0 para sair): ";
-    do
-    {
+    string nome;
+    int i, codigo;
+    cout << "\nInforme o nome do cliente(Digite 0 para sair): ";
+    cin >> nome;
+    if(nome == "0") return 0;
+    vector<ClienteClass> c = ClienteClass::getByName(nome);
+    for (i=0; i<c.size(); i++) {
+        cout << "-------------------------------------------------------------" << endl;
+        cout << "Código: " << c[i].codigo << endl;
+        cout << "Nome: " << c[i].nome << endl;
+        cout << "Endereço: " << c[i].endereco << endl;
+        cout << "Data de Nascimento: " << c[i].dtNascimento << endl;
+        cout << "Telefone: " << c[i].telefone << endl;
+        cout << "-------------------------------------------------------------" << endl;
+    }
+
+    if(i == 1)
+        return c[0].codigo;
+    else if(i == 0) {
+        cout << "Nenhum resultado encontrado!" << endl;
+        return receberCodigoCliente();
+    } else {
+        cout << "Multiplos usuários encontrados." << endl << "Digite o código do cliente desejado: ";
         cin >> codigo;
-        verificarExistencia = ClienteClass::get(codigo);
-        if(verificarExistencia.codigo==0 && codigo!=0) //Só mostrar essa mensagem se o código do cliente não estiver cadastrado, e o usuário não tiver digitado 0 para sair.
-        {
-            cout << "Informe um código existente(Digite 0 para sair): ";
-        }
-    } while (verificarExistencia.codigo==0 && codigo!=0); //Enquanto o usuário não informar o código de um cliente cadastrado, não passa a etapa. Se digitar 0 no código, ele finaliza o cadastro de festa
-
-    if(verificarExistencia.codigo==0 && codigo==0) // Se o cliente digitou 0, a função de cadastrar festa é finalizada.
-    {
-        return 0;
+        ClienteClass cli = ClienteClass::get(codigo);
+        if(cli.codigo == 0) {
+            cout << "Código Inválido" << endl;
+            return receberCodigoCliente();
+        } else
+            return cli.codigo;
     }
-    else // Caso tenha encontrado o código nos arquivos, retornar código.
-    {
-        return codigo;
-    }
-
 }
 
 unsigned int gerarCodigoFesta() //Função para gerar o código aleatório da festa
