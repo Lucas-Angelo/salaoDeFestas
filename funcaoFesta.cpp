@@ -333,10 +333,13 @@ int verificarCoincidencia(string data, string horaInicio, string horaFim)
             horarioFimArquivo = (atoi(fimHoraArquivo.c_str()))*60 + atoi(fimMinutoArquivo.c_str());
 
 
-            if(inicioEmMinutosEscrito == horarioInicioArquivo || fimEmMinutosEscrito <= horarioFimArquivo)
+            if(inicioEmMinutosEscrito == horarioInicioArquivo || fimEmMinutosEscrito <= horarioFimArquivo) //Se tiver mesmo horário de início e fim
                 resposta=0;
 
-            if(fimEmMinutosEscrito >= horarioInicioArquivo)
+            if(fimEmMinutosEscrito >= horarioInicioArquivo && fimEmMinutosEscrito<=inicioEmMinutosEscrito) //Se o início for no meio de outra festa
+                resposta=0;
+
+            if(inicioEmMinutosEscrito <= horarioInicioArquivo && fimEmMinutosEscrito >= horarioInicioArquivo) //Se o fim for no meio de outra festa
                 resposta=0;
 
         }
