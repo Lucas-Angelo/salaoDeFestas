@@ -61,7 +61,8 @@ class DateHelper
             ss2>>sm;
             ss3<<year;
             ss3>>sy;
-
+            if(sm.length() == 1) sm = '0' + sm;
+            if(sd.length() == 1) sd = '0' + sd;
             return sd + "/" + sm + "/" + sy;
         }
         string inputTime(){
@@ -86,8 +87,6 @@ class DateHelper
             ss1>>sh;
             ss2<<minute;
             ss2>>sm;
-
-
             return sh + ":" + sm;
         }
 

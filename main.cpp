@@ -12,6 +12,7 @@ using namespace std;
 #include "funcaoFesta.h"
 #include "funcaoFornecedor.h"
 #include "funcaoRelatorio.h"
+#include "funcaoContrato.h"
 
 
 
@@ -25,7 +26,7 @@ int main() {
   while (op != 4)
     {
     cout << "\n---------------->MENU DE OPCOES<----------------" << endl;
-    cout << "\n1-Cadastrar\n2-Pesquisar\n3-Relatorio\n4-Sair\nDigite uma opcao: ";
+    cout << "\n1-Cadastrar\n2-Pesquisar\n3-Atualizar contrato\n4-Relatórios\n5-Sair\nDigite uma opcao: ";
     cin >> op;
     cad = 0;
     if (op == 1)
@@ -75,8 +76,12 @@ int main() {
         cad = 0;
       }
     }
-    else if(op ==3)
-    funcaoRelatorio();
+    else if (op==3)
+    {      
+      atualizaContrato();
+    }
+    else if(op ==4)
+      funcaoRelatorio();
 
 
   }

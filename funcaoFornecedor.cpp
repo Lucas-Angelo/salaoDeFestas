@@ -27,7 +27,7 @@ int funcaoFornecedor(){
     FornecedorClass fornecedor; //Orientar a objeto por meio da classe
 
     char confirmar;
-    cout << "\n>>> CADASTRAR FORNECEDOR <<<" << endl;
+    cout << "\n--->CADASTRO DE FORNECEDOR<---" << endl;
 
     do
     {
@@ -72,7 +72,7 @@ unsigned int geraCodigo() //Função para gerar o código aleatório
 string salvaNome() //Função para pegar o nome.
 {
     string nome;
-    cout << "Digite o nome? ";
+    cout << "\nDigite o nome: ";
     getline(cin >> ws,nome); //Capturar string/linha(nome) do funcionário.
     return nome;
 }
@@ -95,8 +95,8 @@ string salvaTelefone() //Função para pegar o telefone do funcionário.
         }
         if(verificador<10)
         {
-            cout << "Número de telefone inválido! [Mínimo de 10 números (DDD + número)]" << endl;
-            cout << "Digite um telefone válido: ";
+            cout << "Numero de telefone invalido! [Minimo de 10 numeros (DDD + numero)]" << endl;
+            cout << "Digite um telefone valido: ";
         }
     } while (verificador<10); //Se tiver no mínimo 10 numerais, conclui.
     return telefone;

@@ -7,7 +7,7 @@ using namespace std;
 #include <fstream>
 #include <sstream>
 #include "helpers/ModelHelper.h"
-
+#include <vector>
 // http://prntscr.com/sjryho
 class ClienteClass
 {
@@ -46,6 +46,25 @@ class ClienteClass
                 }
             }
             return c;
+        }
+        static vector<ClienteClass> getByName(string name) {
+            ifstream inFile;
+            string line;
+            vector<ClienteClass> clientes;
+            inFile.open("files/client.txt");
+            int i = 0, j=0;
+            while (getline(inFile, line)) {
+                if(ModelHelper::split(';', line, 1).find(name) != std::string::npos) {
+                    ClienteClass c;
+                    c.codigo = atoi(ModelHelper::split(';',line, 0).c_str());
+                    c.nome = ModelHelper::split(';',line, 1);
+                    c.endereco = ModelHelper::split(';',line, 2);
+                    c.telefone = atoi(ModelHelper::split(';',line, 3).c_str());
+                    c.dtNascimento = ModelHelper::split(';',line, 4);
+                    clientes.push_back(c);
+                }
+            }
+            return clientes;
         }
 };
 
