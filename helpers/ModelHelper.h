@@ -3,6 +3,7 @@
 
 using namespace std;
 #include <string>
+#include <time.h>
 
 class ModelHelper
 {
@@ -20,6 +21,12 @@ class ModelHelper
                     txt += line[i];
             }
             return txt;
+        }
+        static unsigned int generateID() {
+            srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
+            unsigned int codigo;
+            codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
+            return codigo;
         }
 };
 

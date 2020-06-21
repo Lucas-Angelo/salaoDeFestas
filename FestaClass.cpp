@@ -3,4 +3,5 @@
 FestaClass::FestaClass()
 {
     //ctor
+    codigo  = ModelHelper::generateID();
 }

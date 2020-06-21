@@ -14,7 +14,6 @@ using namespace std;
 
 
 unsigned int receberCodigoCliente();
-unsigned int gerarCodigoFesta();
 int salvarConvid();
 string salvarData();
 int salvarDia(string date);
@@ -45,7 +44,7 @@ int funcaoFesta()
         do
         {
 
-            festa.codigo = gerarCodigoFesta();
+            //festa.codigo = gerarCodigoFesta();
 
             festa.qtdConvidados = salvarConvid();
 
@@ -133,14 +132,6 @@ unsigned int receberCodigoCliente() {
         } else
             return cli.codigo;
     }
-}
-
-unsigned int gerarCodigoFesta() //Função para gerar o código aleatório da festa
-{
-    srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
-    unsigned int codigo;
-    codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
-    return codigo;
 }
 
 int salvarConvid() //Função para receber a quantidade de convidados
