@@ -23,6 +23,7 @@ int verificarHorarios(string horaInicio, string horaFim);
 string salvarHoraInicioSabado();
 string salvarHoraFimSabado();
 string salvarTema();
+int verificarCoincidencia(string data, string horaInicio, string horaFim);
 
 int funcaoFesta()
 {
@@ -48,34 +49,44 @@ int funcaoFesta()
 
             festa.qtdConvidados = salvarConvid();
 
-            festa.dt = salvarData();
-
-            festa.diaSemana = salvarDia();
-
-            if(festa.diaSemana!=7)
             do
             {
-                festa.hora_inicio = salvarHoraInicio();
-                festa.hora_fim = salvarHoraFim();
 
-                conferir = verificarHorarios(festa.hora_inicio, festa.hora_fim);
-                if(conferir==0)
-                {
-                    cout << "A festa pode ter no máximo 4 horas de duração!" << endl;
-                }
-            } while (conferir==0);
-            else
-            {
+                festa.dt = salvarData();
+
+                festa.diaSemana = salvarDia();
+
+                if(festa.diaSemana!=7)
                 do
                 {
-                    festa.hora_inicio = salvarHoraInicioSabado();
-                    festa.hora_fim = salvarHoraFimSabado();
-                    if(festa.hora_inicio=="Negado" || festa.hora_fim=="Negado")
+                    festa.hora_inicio = salvarHoraInicio();
+                    festa.hora_fim = salvarHoraFim();
+
+                    conferir = verificarHorarios(festa.hora_inicio, festa.hora_fim);
+                    if(conferir==0)
                     {
-                        cout << "Os horários de 12 às 16 e 18 às 22 estão reservados." << endl;
+                        cout << "A festa pode ter no máximo 4 horas de duração!" << endl;
                     }
-                } while (festa.hora_inicio=="Negado" || festa.hora_fim=="Negado");
-            }
+                } while (conferir==0);
+                else
+                {
+                    do
+                    {
+                        festa.hora_inicio = salvarHoraInicioSabado();
+                        festa.hora_fim = salvarHoraFimSabado();
+                        if(festa.hora_inicio=="Negado" || festa.hora_fim=="Negado")
+                        {
+                            cout << "Os horários de 12 às 16 e 18 às 22 estão reservados." << endl;
+                        }
+                    } while (festa.hora_inicio=="Negado" || festa.hora_fim=="Negado");
+                }
+
+                if(verificarCoincidencia(festa.dt, festa.hora_inicio, festa.hora_fim) != 1)
+                {
+                    cout << "Desculpe, já existe uma festa cadastrada nesse horário." << endl << "Por favor, tente novamente." << endl;
+                }
+
+            } while (verificarCoincidencia(festa.dt, festa.hora_inicio, festa.hora_fim) != 1); //Verificar se horários coincidem
 
             festa.tema = salvarTema();
 
@@ -95,6 +106,8 @@ int funcaoFesta()
             cout << "Os dados inseridos estão corretos? ";
             cin >> confirmar;
         } while (toupper(confirmar)!='C');
+
+        festa.save();
 
     }
 
@@ -279,4 +292,52 @@ string salvarTema()
     getline(cin >> ws,tema);
 
     return tema;
+}
+
+int verificarCoincidencia(string data, string horaInicio, string horaFim)
+{
+    string inicioHora, inicioMinuto;
+    string fimHora, fimMinuto;
+
+    inicioHora = horaInicio.substr(0,2); //Salvar a hora de inicio
+    inicioMinuto = horaInicio.substr(3,2); //E salvar os minutos que inicia também
+
+    fimHora = horaFim.substr(0,2); //Salvar a hora de fim
+    fimMinuto = horaFim.substr(3,2);//E salvar os minutos que finaliza também
+
+    int inicioEmMinutosEscrito = atoi(inicioHora.c_str())*60 + atoi(inicioMinuto.c_str());
+    int fimEmMinutosEscrito = atoi(fimHora.c_str())*60 + atoi(fimMinuto.c_str());
+
+    string inicioHoraArquivo, inicioMinutoArquivo;
+    int horarioInicioArquivo;
+
+    string fimHoraArquivo, fimMinutoArquivo;
+    int horarioFimArquivo;
+
+    int resposta = 1;
+    ifstream inFile;
+    inFile.open("files/party.txt");
+    string line;
+    FestaClass f;
+    while (getline(inFile, line))
+    {
+        if(ModelHelper::split(';', line, 2) ==  data)
+        {
+
+            inicioHoraArquivo = (ModelHelper::split(';',line, 4)).substr(0,2);
+            inicioMinutoArquivo = (ModelHelper::split(';',line, 4)).substr(3,2);
+            horarioInicioArquivo = (atoi(inicioHoraArquivo.c_str()))*60 + atoi(inicioMinutoArquivo.c_str());
+
+            fimHoraArquivo = (ModelHelper::split(';',line, 4)).substr(0,2);
+            fimMinutoArquivo = (ModelHelper::split(';',line, 4)).substr(3,2);
+            horarioFimArquivo = (atoi(fimHoraArquivo.c_str()))*60 + atoi(fimMinutoArquivo.c_str());
+
+
+            if(inicioEmMinutosEscrito >= horarioInicioArquivo || fimEmMinutosEscrito <= horarioFimArquivo)
+                resposta=0;
+        }
+    }
+
+    return resposta;
+
 }
