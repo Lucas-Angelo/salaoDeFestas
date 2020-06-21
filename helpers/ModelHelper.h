@@ -4,6 +4,7 @@
 using namespace std;
 #include <string>
 #include <time.h>
+#include <stdlib.h>
 
 class ModelHelper
 {
