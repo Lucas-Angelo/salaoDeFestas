@@ -335,7 +335,10 @@ int verificarCoincidencia(string data, string horaInicio, string horaFim)
 
             if(inicioEmMinutosEscrito == horarioInicioArquivo || fimEmMinutosEscrito <= horarioFimArquivo)
                 resposta=0;
-            else if(inicioEmMinutosEscrito == horarioInicioArquivo || fimEmMinutosEscrito <= horarioFimArquivo)
+
+            if(fimEmMinutosEscrito >= horarioInicioArquivo)
+                resposta=0;
+
         }
     }
 
