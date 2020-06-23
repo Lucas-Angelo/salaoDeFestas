@@ -74,11 +74,20 @@ int funcaoFesta()
                     {
                         festa.hora_inicio = salvarHoraInicioSabado();
                         festa.hora_fim = salvarHoraFimSabado();
+
+                        conferir = verificarHorarios(festa.hora_inicio, festa.hora_fim);
+
                         if(festa.hora_inicio=="Negado" || festa.hora_fim=="Negado")
                         {
                             cout << "Os horários de 12 às 16 e 18 às 22 estão reservados." << endl;
                         }
-                    } while (festa.hora_inicio=="Negado" || festa.hora_fim=="Negado");
+
+                        if(conferir==0)
+                        {
+                            cout << "A festa pode ter no máximo 4 horas de duração!" << endl;
+                        }
+
+                    } while (festa.hora_inicio=="Negado" || festa.hora_fim=="Negado" || conferir==0);
                 }
 
                 if(verificarCoincidencia(festa.dt, festa.hora_inicio, festa.hora_fim) != 1)
