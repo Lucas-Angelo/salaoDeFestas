@@ -79,7 +79,7 @@ int funcaoFesta()
 
                         if(festa.hora_inicio=="Negado" || festa.hora_fim=="Negado")
                         {
-                            cout << "Os horários de 12 às 16 e 18 às 22 estão reservados." << endl;
+                            cout << "Os únicos horários aos sábados são de 12 às 16 e 18 às 22." << endl;
                         }
 
                         if(conferir==0)
@@ -267,11 +267,11 @@ string salvarHoraInicioSabado()
     int horaInicioInt = horaInicioInt=atoi(hora.c_str());
     if(horaInicioInt!=12 && horaInicioInt!=13 && horaInicioInt!=14 && horaInicioInt!=15 && horaInicioInt!=16)
     {
-        return hora;
+        return "Negado";
     }
     else
     {
-        return "Negado";
+        return hora;
     }
 }
 
@@ -286,11 +286,11 @@ string salvarHoraFimSabado()
     int horaFimInt = horaFimInt=atoi(hora.c_str());
     if(horaFimInt!=12 && horaFimInt!=13 && horaFimInt!=14 && horaFimInt!=15 && horaFimInt!=16)
     {
-        return hora;
+        return "Negado";
     }
     else
     {
-        return "Negado";
+        return hora;
     }
 }
 
