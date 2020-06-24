@@ -3,7 +3,6 @@
 
 int funcaoContrato();
 int atualizaContrato ();
-unsigned int gerarCodigoo();
 
 #endif
 
