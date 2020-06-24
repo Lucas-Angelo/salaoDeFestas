@@ -13,7 +13,6 @@ using namespace std;
 #include "helpers/DateHelper.h"
 
 string salvarDatas();
-unsigned int gerarCodigos();
 unsigned long salvarTelefones();// unsigned so pega valor positivo
 int funcaoCliente()
 {
@@ -22,10 +21,8 @@ int funcaoCliente()
     setlocale(LC_ALL,"portuguese"); //colocar acento
     srand((unsigned int) time(NULL)); //configura a funcao aleatoria
     char c='a';
-    while(toupper(c)!='C')
-    {
+    while(toupper(c)!='C') {
         cout << "\n------------>CADASTRO DE CLIENTE<------------" << endl;
-        cli.codigo = gerarCodigos();
 
         cout << "\nDigite o nome: ";
         getline(cin >> ws,cli.nome);
@@ -85,15 +82,8 @@ void procuraCliente() {
     }
     if(i == 0) cout << "------------------------\nNenhum item encontrado\n------------------------";
 }
-unsigned int gerarCodigos()
-{
-    srand((unsigned int)time(NULL));
-    unsigned int codigo;
-    codigo = rand();
-    return codigo;
-}
-unsigned long salvarTelefones()
-{
+
+unsigned long salvarTelefones() {
     unsigned long long int telefone=0;
     do {
         cin.seekg(0,ios::end);
@@ -103,6 +93,7 @@ unsigned long salvarTelefones()
     } while(telefone < 1000000000 || telefone > 9999999999 );
     return telefone;
 }
+
 string salvarDatas()
 {
     DateHelper dh; //Chamar classe DataHelper, que verifica se a data inserida é válida

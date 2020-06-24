@@ -33,6 +33,7 @@ class FornecedorClass
             ss>>cd;
             string line;
             FornecedorClass f;
+            f.codigo = 0;
             // Ler linha por linha até o fim do arquivo.
             while (getline(inFile, line)) {
                 // Se encontrar o codigo do fornecedor, quebrar a linha e definir os atributos da classe

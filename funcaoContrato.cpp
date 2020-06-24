@@ -60,10 +60,7 @@ int funcaoContrato()
 
     }while (!prossiga); //repete até encontrar codigo de festa que existe
 
-    do
-    {
-
-        contrato.codigo = ModelHelper::generateID(); //Capturar código aleatório gerado.
+    do {
 
         if (festa.diaSemana>=2&&festa.diaSemana<=5)//valores a pagar para dia da semana
         {

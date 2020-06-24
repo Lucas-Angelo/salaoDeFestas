@@ -35,6 +35,7 @@ class FuncionariosClass
             ss>>cd;
             string line;
             FuncionariosClass f;
+            f.codigo = 0;
             // Ler linha por linha até o fim do arquivo.
             while (getline(inFile, line)) {
                 // Se encontrar o codigo do funcionario, quebrar a linha e definir os atributos da classe
