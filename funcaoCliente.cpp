@@ -1,38 +1,55 @@
 #include <iostream>
 #include <stdio.h>
 #include "munit.h"
+#include <locale.h>
+#include <ctype.h>
 
 using namespace std;
-#include <string>
+#include <string.h>
 #include <time.h>
 #include "ClienteClass.h"
 #include "helpers/ModelHelper.h"
 #include <fstream>
+#include "helpers/DateHelper.h"
 
-
+string salvarDatas();
+unsigned int gerarCodigos();
+unsigned long salvarTelefones();// unsigned so pega valor positivo
 int funcaoCliente()
 {
+
     ClienteClass cli;
     setlocale(LC_ALL,"portuguese"); //colocar acento
     srand((unsigned int) time(NULL)); //configura a funcao aleatoria
+    char c='a';
+    while(toupper(c)!='C')
+    {
+        cout << "\n------------>CADASTRO DE CLIENTE<------------" << endl;
+        cli.codigo = gerarCodigos();
 
-    printf("\n------------>CADASTRO DE CLIENTE<------------\n");
-    cli.codigo = rand();
+        cout << "\nDigite o nome: ";
+        getline(cin >> ws,cli.nome);
 
-    printf("\nDigite o nome: ");
-    getline(cin >> ws,cli.nome);
+        cout <<"Digite o endereço: ";
+        getline(cin >> ws,cli.endereco);//ws pega a linha inteira
 
-    printf("\nDigite o endereço: ");
-    getline(cin >> ws,cli.endereco);
+        cli.telefone = salvarTelefones();
+        cli.dtNascimento = salvarDatas();
 
-    printf("\nDigite o telefone: ");
-    cin>>cli.telefone;
+        cout << "\n\nDADOS DO CLIENTE:\n" << endl;
+        printf("Código: %d\n", cli.codigo);
+        cout << "Nome: " + cli.nome << endl;
+        cout << "Endereço: " << cli.endereco << endl;
+        cout << "Telefone: " << cli.telefone << endl;
+        cout << "Data: " + cli.dtNascimento << endl;
 
-    printf("\nDigite a data de nascimento: ");
-    getline(cin >> ws,cli.dtNascimento);
-
+        printf("\n--->CONFIRMAR DADOS<---");
+        printf("\nC - Para confirmar");
+        printf("\nR - Para refazer");
+        printf("\nOs dados inseridos estão corretos? ");
+        cin >> c;
+    }
     cli.save();
-
     return 0;
 }
 
@@ -68,6 +85,34 @@ void procuraCliente() {
     }
     if(i == 0) cout << "------------------------\nNenhum item encontrado\n------------------------";
 }
+unsigned int gerarCodigos()
+{
+    srand((unsigned int)time(NULL));
+    unsigned int codigo;
+    codigo = rand();
+    return codigo;
+}
+unsigned long salvarTelefones()
+{
+    unsigned int telefone=0;
+    do
+    {
+    cout << "Digite o telefone: ";
+    cin >> telefone;
+    }
+    while(telefone < 1000000000 || telefone > 9999999999 );
+
+    return telefone;
+}
+string salvarDatas()
+{
+    DateHelper dh; //Chamar classe DataHelper, que verifica se a data inserida é válida
+    cout << "Digite a data(dd/mm/AAAA): ";
+    string data = dh.inputDate(); //Equivale ao cin da data, chamando a função para verificar se é válida
+    cout << "data: " << data;
+    return data;
+}
+
 
 
 
