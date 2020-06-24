@@ -15,7 +15,7 @@ class ClienteClass
         unsigned int codigo  = NULL;
         string nome;
         string endereco;
-        unsigned long telefone;
+        unsigned long long int telefone;
         string dtNascimento;
         int save() {
             ofstream file;

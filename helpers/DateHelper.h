@@ -14,8 +14,10 @@ class DateHelper
     public:
         DateHelper();
         string inputDate(){
-            int day, month, year, is_leap = 0, is_valid = 1;
+            int day=1, month=1, year=1000, is_leap = 0, is_valid = 1;
             do {
+                cin.seekg(0,ios::end);
+                cin.clear();
                 is_valid = 1;
                 cin >> day;
                 // Validando se o inicio da data (o dia) possui / no final
@@ -49,8 +51,10 @@ class DateHelper
                     } else if(day > 31  || day < 1)
                         is_valid = 0;
                 }
-                if(is_valid == 0)
-                    cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl << "Digite a hora: ";
+                if(is_valid == 0) {
+                     cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl << "Digite a hora: ";
+                }
+
             } while(is_valid == 0);
 
             stringstream ss, ss2, ss3;
@@ -68,6 +72,8 @@ class DateHelper
         string inputTime(){
             int hour, minute, valid;
             do {
+                cin.seekg(0,ios::end);
+                cin.clear();
                 valid = 1;
                 cin >> hour;
                 if (cin.get() != ':')

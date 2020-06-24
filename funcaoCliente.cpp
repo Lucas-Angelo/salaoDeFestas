@@ -94,14 +94,13 @@ unsigned int gerarCodigos()
 }
 unsigned long salvarTelefones()
 {
-    unsigned int telefone=0;
-    do
-    {
-    cout << "Digite o telefone: ";
-    cin >> telefone;
-    }
-    while(telefone < 1000000000 || telefone > 9999999999 );
-
+    unsigned long long int telefone=0;
+    do {
+        cin.seekg(0,ios::end);
+        cin.clear();
+        cout << "Digite o telefone: ";
+        cin >> telefone;
+    } while(telefone < 1000000000 || telefone > 9999999999 );
     return telefone;
 }
 string salvarDatas()
