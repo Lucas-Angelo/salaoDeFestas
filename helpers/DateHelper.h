@@ -39,7 +39,7 @@ class DateHelper
                if(month < 0 || month > 12)
                     is_valid = 0;
                 else {
-                    // Validar se o dia È v·lido baseado no mes, e no ano caso bissexto.
+                    // Validar se o dia √© v√°lido baseado no mes, e no ano caso bissexto.
                     if (month == 2) {
                         if (is_leap && day == 29)
                             is_valid = 1;
@@ -52,7 +52,7 @@ class DateHelper
                         is_valid = 0;
                 }
                 if(is_valid == 0) {
-                     cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl << "Digite a hora: ";
+                     cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl << "Digite a data: ";
                 }
 
             } while(is_valid == 0);
