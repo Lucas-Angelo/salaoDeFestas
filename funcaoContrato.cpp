@@ -60,10 +60,7 @@ int funcaoContrato()
 
     }while (!prossiga); //repete até encontrar codigo de festa que existe
 
-    do
-    {
-
-        contrato.codigo = gerarCodigoo(); //Capturar código aleatório gerado.
+    do {
 
         if (festa.diaSemana>=2&&festa.diaSemana<=5)//valores a pagar para dia da semana
         {
@@ -249,14 +246,6 @@ int atualizaContrato()
 
 
 
-}
-
-unsigned int gerarCodigoo() //Função para gerar o código aleatório
-{
-    srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
-    unsigned int codigo;
-    codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
-    return codigo;
 }
 
 

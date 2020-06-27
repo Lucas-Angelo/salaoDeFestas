@@ -29,15 +29,10 @@ int funcaoFornecedor(){
     char confirmar;
     cout << "\n--->CADASTRO DE FORNECEDOR<---" << endl;
 
-    do
-    {
-
-        fornecedor.codigo = geraCodigo(); //Capturar código aleatório gerado.
+    do {
 
         fornecedor.nome = salvaNome(); //Receber nome digitado.
-
         fornecedor.telefone = salvaTelefone(); //Receber telefone digitado.
-
         fornecedor.produto = salvaProduto(); //Receber função do fornecedor digitada.
 
         cout << "\nDados do fornecedor:" << endl;
@@ -58,15 +53,6 @@ int funcaoFornecedor(){
     cout << "\n---> FORNECEDOR CADASTRADO COM SUCESSO <---\n\n" << endl;
 
 return 0;
-}
-
-
-unsigned int geraCodigo() //Função para gerar o código aleatório
-{
-    srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
-    unsigned int codigo;
-    codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
-    return codigo;
 }
 
 string salvaNome() //Função para pegar o nome.

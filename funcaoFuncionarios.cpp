@@ -26,10 +26,7 @@ int funcaoFuncionarios()
     char confirmar;
     cout << "\n>>> CADASTRAR FUNCIONÁRIO <<<" << endl;
 
-    do
-    {
-
-        funcionarios.codigo = gerarCodigo(); //Capturar código aleatório gerado.
+    do {
 
         funcionarios.nome = salvarNome(); //Receber nome digitado.
 
@@ -63,14 +60,6 @@ int funcaoFuncionarios()
 
 
     return 0;
-}
-
-unsigned int gerarCodigo() //Função para gerar o código aleatório
-{
-    srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
-    unsigned int codigo;
-    codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
-    return codigo;
 }
 
 string salvarNome() //Função para pegar o nome.

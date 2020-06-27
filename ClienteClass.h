@@ -15,7 +15,7 @@ class ClienteClass
         unsigned int codigo  = NULL;
         string nome;
         string endereco;
-        unsigned long telefone;
+        unsigned long long int telefone;
         string dtNascimento;
         int save() {
             ofstream file;
@@ -34,6 +34,7 @@ class ClienteClass
             ss>>cd;
             string line;
             ClienteClass c;
+            c.codigo = 0;
             // Ler linha por linha até o fim do arquivo.
             while (getline(inFile, line)) {
                 // Se encontrar o codigo do cliente, quebrar a linha e definir os atributos da classe

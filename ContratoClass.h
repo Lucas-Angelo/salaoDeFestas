@@ -36,6 +36,7 @@ class ContratoClass
             ss>>cd;
             string line;
             ContratoClass c;
+            c.codigo = 0;
             // Ler linha por linha até o fim do arquivo.
             while (getline(inFile, line)) {
                 // Se encontrar o codigo do contrato, quebrar a linha e definir os atributos da classe
