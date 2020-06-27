@@ -8,7 +8,6 @@ using namespace std;
 #include "FuncionariosClass.h"
 #include "helpers/ModelHelper.h"
 
-unsigned int gerarCodigo();
 string salvarNome();
 string salvarTelefone();
 string salvarFuncao();
@@ -24,7 +23,7 @@ int funcaoFuncionarios()
 
 
     char confirmar;
-    cout << "\n>>> CADASTRAR FUNCION√ÅRIO <<<" << endl;
+    cout << "\n>>> CADASTRAR FUNCION¡RIO <<<" << endl;
 
     do {
 
@@ -32,45 +31,45 @@ int funcaoFuncionarios()
 
         funcionarios.telefone = salvarTelefone(); //Receber telefone digitado.
 
-        funcionarios.funcao = salvarFuncao(); //Receber fun√ß√£o do funcion√°rio digitada.
+        funcionarios.funcao = salvarFuncao(); //Receber FunÁ„o do funcion·rio digitada.
 
-        funcionarios.salario = salvarSalario(); //Receber sal√°rio digitado.
+        funcionarios.salario = salvarSalario(); //Receber sal·rio digitado.
 
         funcionarios.tipo = salvarTipo(); //Receber tipo digitado.
 
 
-        cout << "\nDados do funcion√°rio:" << endl;
-        cout << "C√≥digo: " << funcionarios.codigo << endl;
+        cout << "\nDados do funcion·rio:" << endl;
+        cout << "CÛdigo: " << funcionarios.codigo << endl;
         cout << "Nome: " << funcionarios.nome << endl;
         cout << "Telefone: " << funcionarios.telefone << endl;
-        cout << "Fun√ß√£o: " << funcionarios.funcao << endl;
-        cout << "Sal√°rio: " << funcionarios.salario << endl;
+        cout << "FunÁ„o: " << funcionarios.funcao << endl;
+        cout << "Sal·rio: " << funcionarios.salario << endl;
         cout << "Tipo: " << funcionarios.tipo << "\n" << endl;
 
         cout << "\n---> Confirmar dados <---" << endl;
         cout << "C - Para confirmar" << endl;
         cout << "R - Para refazer" << endl;
-        cout << "Os dados inseridos est√£o corretos? ";
+        cout << "Os dados inseridos est„o corretos? ";
         cin >> confirmar;
     } while (toupper(confirmar)!='C');
 
     funcionarios.save(); //Salvar os dados do objeto classe funcionarios no arquivo
 
-    cout << "\n---> FUNCION√ÅRIO CADASTRADO COM SUCESSO <---\n\n" << endl;
+    cout << "\n---> FUNCION¡RIO CADASTRADO COM SUCESSO <---\n\n" << endl;
 
 
     return 0;
 }
 
-string salvarNome() //Fun√ß√£o para pegar o nome.
+string salvarNome() //FunÁ„o para pegar o nome.
 {
     string nome;
     cout << "Digite o nome? ";
-    getline(cin >> ws,nome); //Capturar string/linha(nome) do funcion√°rio.
+    getline(cin >> ws,nome); //Capturar string/linha(nome) do funcion·rio.
     return nome;
 }
 
-string salvarTelefone() //Fun√ß√£o para pegar o telefone do funcion√°rio.
+string salvarTelefone() //FunÁ„o para pegar o telefone do funcion·rio.
 {
     int verificador=0, x, i;
     string telefone;
@@ -88,8 +87,8 @@ string salvarTelefone() //Fun√ß√£o para pegar o telefone do funcion√°rio.
         }
         if(verificador<10)
         {
-            cout << "N√∫mero de telefone inv√°lido! [M√≠nimo de 10 n√∫meros (DDD + n√∫mero)]" << endl;
-            cout << "Digite um telefone v√°lido: ";
+            cout << "N˙mero de telefone inv·lido! [MÌnimo de 10 n˙meros (DDD + n˙mero)]" << endl;
+            cout << "Digite um telefone v·lido: ";
         }
     } while (verificador<10); //Se tiver no minimo 10 numerais, conclui.
     return telefone;
@@ -98,7 +97,7 @@ string salvarTelefone() //Fun√ß√£o para pegar o telefone do funcion√°rio.
 string salvarFuncao() //Funcao para pegar a funcao do funcionario.
 {
     string funcao;
-    cout << "Digite a fun√ß√£o: ";
+    cout << "Digite a FunÁ„o: ";
     getline(cin >> ws,funcao);
     return funcao;
 }
@@ -106,14 +105,14 @@ string salvarFuncao() //Funcao para pegar a funcao do funcionario.
 float salvarSalario() //Funcao para pegar o salario do funcionario.
 {
     float salario;
-    cout << "Digite o sal√°rio: ";
+    cout << "Digite o sal·rio: ";
     do
     {
         fflush(stdin);
         cin >> salario;
         if(salario < 0)
         {
-            cout << "Sal√°rio inv√°lido!\nDigite um sal√°rio positivo: ";
+            cout << "Sal·rio inv·lido!\nDigite um sal·rio positivo: ";
 
         }
     } while (salario < 0);
@@ -123,17 +122,16 @@ float salvarSalario() //Funcao para pegar o salario do funcionario.
 char salvarTipo() //Funcao para pegar o tipo do funcionario.
 {
     char tipo;
-    cout << "Menu de op√ß√µes:";
-    cout << "\nT - Para tempor√°rio\nF - Para fixo";
-    cout << "\nDigite o tipo do funcion√°rio? ";
-    do
-    {
+    cout << "Menu de opÁıes:";
+    cout << "\nT - Para tempor·rio\nF - Para fixo";
+    cout << "\nDigite o tipo do funcion·rio? ";
+    do {
         fflush(stdin);
         cin >> tipo;
         tipo = toupper(tipo);
         if(tipo!='T' && tipo!='F')
         {
-            cout << "Informe uma op√ß√£o valida(T ou F): ";
+            cout << "Informe uma opÁıe valida(T ou F): ";
         }
     } while (tipo!='T' && tipo!='F');
 
@@ -141,7 +139,7 @@ char salvarTipo() //Funcao para pegar o tipo do funcionario.
 }
 
 void procuraFuncionario() {
-    cout << "\n------------>PESQUISA DE FUNCION√ÅRIOS<------------" << endl;
+    cout << "\n------------>PESQUISA DE FUNCION¡RIOS<------------" << endl;
     string nome;
     cout << "Pesquisar por nome: ";
     getline(cin >> ws, nome);
@@ -162,11 +160,11 @@ void procuraFuncionario() {
           f.salario = atof(ModelHelper::split(';',line, 4).c_str());
           f.tipo = ModelHelper::split(';',line, 5)[0];
           cout << "-------------------------------------------------------------" << endl;
-          cout << "C√≥digo: " << f.codigo << endl;
+          cout << "CÛdigo: " << f.codigo << endl;
           cout << "Nome: " << f.nome << endl;
           cout << "Telefone: " << f.telefone << endl;
-          cout << "Fun√ß√£o: " << f.funcao << endl;
-          cout << "Sal√°rio: " << f.salario << endl;
+          cout << "FunÁ„o: " << f.funcao << endl;
+          cout << "Sal·rio: " << f.salario << endl;
           cout << "Tipo: " << f.tipo << endl;
           cout << "-------------------------------------------------------------" << endl;
         }

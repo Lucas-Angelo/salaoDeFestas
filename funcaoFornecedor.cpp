@@ -14,7 +14,6 @@ using namespace std;
 #include "helpers/ModelHelper.h"
 #include "FornecedorClass.h"
 
-unsigned int geraCodigo();
 string salvaNome();
 string salvaTelefone();
 string salvaProduto();
