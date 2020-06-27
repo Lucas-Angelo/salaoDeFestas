@@ -32,20 +32,17 @@ int funcaoFesta()
 
     festa.codigo_cliente = receberCodigoCliente();
 
-    if(festa.codigo_cliente == 0) //Se o usu·rio desistiu de cadastrar a festa.
+    if(festa.codigo_cliente == 0) //Se o usu√°rio desistiu de cadastrar a festa.
     {
         cout << "\nSaindo do cadastro de festas..." << endl;
     }
-    else // Caso o cÛdigo tenha sido encontado, continuar cadastro de festa
+    else // Caso o c√≥digo tenha sido encontado, continuar cadastro de festa
     {
         char confirmar;
         cout << "\n>>> CADASTRAR FESTA <<<" << endl;
 
         int conferir=0;
-        do
-        {
-
-            //festa.codigo = gerarCodigoFesta();
+        do {
 
             festa.qtdConvidados = salvarConvid();
 
@@ -69,15 +66,24 @@ int funcaoFesta()
                     do {
                         festa.hora_inicio = salvarHoraInicioSabado();
                         festa.hora_fim = salvarHoraFimSabado();
+
+                        conferir = verificarHorarios(festa.hora_inicio, festa.hora_fim);
+
                         if(festa.hora_inicio=="Negado" || festa.hora_fim=="Negado")
-                            cout << "Os hor·rios de 12 ‡s 16 e 18 ‡s 22 est„o reservados." << endl;
-                    } while (festa.hora_inicio=="Negado" || festa.hora_fim=="Negado");
+                            cout << "Os ˙nicos hor·rios aos s·bados s„o de 12 ‡s 16 e 18 ‡s 22." << endl;
+
+                        if(conferir==0)
+                            cout << "A festa pode ter no m·ximo 4 horas de duraÁ„o!" << endl;
+
+                    } while (festa.hora_inicio=="Negado" || festa.hora_fim=="Negado" || conferir==0);
                 }
 
                 if(verificarCoincidencia(festa.dt, festa.hora_inicio, festa.hora_fim) != 1)
+                {
                     cout << "Desculpe, j· existe uma festa cadastrada nesse hor·rio." << endl << "Por favor, tente novamente." << endl;
+                }
 
-            } while (verificarCoincidencia(festa.dt, festa.hora_inicio, festa.hora_fim) != 1); //Verificar se hor·rios coincidem
+            } while (verificarCoincidencia(festa.dt, festa.hora_inicio, festa.hora_fim) != 1); //Verificar se hor√°rios coincidem
 
             festa.tema = salvarTema();
             string weekNames[7] = { "Domingo", "Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado" };
@@ -138,19 +144,24 @@ unsigned int receberCodigoCliente() {
     }
 }
 
-int salvarConvid() //FunÁ„o para receber a quantidade de convidados
+int salvarConvid() //funÁ„o para receber a quantidade de convidados
 {
     int qtd;
     cout << "\nQual a quantidade de convidados? ";
     do
     {
         cin >> qtd;
-        if(qtd < 0)
+        if(qtd <= 0)
         {
-            cout << "N˙meros negativos s„o inv·lidos!" << endl;
+            cout << "N√∫meros negativos ou nulos s„o inv·lidos!" << endl;
             cout << "Digite uma quantidade v·lida: ";
         }
-    } while (qtd < 0);
+        if(qtd < 100)
+        {
+            cout << "O m·ximo de convidados s„o 100." << endl;
+            cout << "Digite uma quantidade v·lido: ";
+        }
+    } while (qtd <= 0 || qtd > 100);
 
     return qtd;
 }
@@ -159,7 +170,7 @@ string salvarData() {
     DateHelper dh; //Chamar classe DataHelper, que verifica se a data inserida È v·lida
     cout << "Formato de data aceit·vel: dd/mm/aaaa" << endl;
     cout << "Digite a data: ";
-    string data = dh.inputDate(); //Equivale ao cin da data, chamando a funÁ„o para verificar se È v·lida
+    string data = dh.inputDate(); //Equivale ao cin da data, chamando a funÁ„o para verificar se √© v√°lida
     return data;
 }
 
@@ -197,7 +208,7 @@ string salvarHoraInicio()
     DateHelper tm;
     cout << "Formato de hor·rio aceit·vel: HH:mm" << endl;
     cout << "Digite o hor·rio do inÌcio: ";
-    string hora = tm.inputTime(); //Equivale ao cin da hora de inicio, chamando a funÁ„o para verificar se È v·lido
+    string hora = tm.inputTime(); //Equivale ao cin da hora de inicio, chamando a funÁ„o para verificar se √© v√°lido
 
     return hora;
 }
@@ -206,34 +217,34 @@ string salvarHoraFim()
 {
     DateHelper tm;
     cout << "Digite o hor·rio do fim: ";
-    string hora = tm.inputTime(); //Equivale ao cin da hora de fim, chamando a funÁ„o para verificar se È v·lido
+    string hora = tm.inputTime(); //Equivale ao cin da hora de fim, chamando a funÁ„o para verificar se √© v√°lido
 
     return hora;
 }
 
 int verificarHorarios(string horaInicio, string horaFim)
 {
-    //InÌcio do sistema de verificar se a festa tem no m·ximo 4 horas de duraÁ„o
+    //inÌcio do sistema de verificar se a festa tem no m·ximo 4 horas de duraÁ„o
     string inicioHora, inicioMinuto;
     string fimHora, fimMinuto;
 
     inicioHora = horaInicio.substr(0,2); //Salvar a hora de inicio
-    inicioMinuto = horaInicio.substr(3,2); //E salvar os minutos que inicia tambÈm
+    inicioMinuto = horaInicio.substr(3,2); //E salvar os minutos que inicia tamb√©m
 
     fimHora = horaFim.substr(0,2); //Salvar a hora de fim
-    fimMinuto = horaFim.substr(3,2);//E salvar os minutos que finaliza tambÈm
+    fimMinuto = horaFim.substr(3,2);//E salvar os minutos que finaliza tamb√©m
 
     int somaInicio=0, somaFim=0;
 
     somaInicio = (atoi(inicioHora.c_str()) * 60) + atoi(inicioMinuto.c_str()); //Agora converter as strings de horas e minutos de inÌcio, em ints. E transformar as horas em minutos.
-    somaFim = (atoi(fimHora.c_str()) * 60) + atoi(fimMinuto.c_str()); //Mesma convers„o e transformaÁ„o para as horas e minutos de fim.
+    somaFim = (atoi(fimHora.c_str()) * 60) + atoi(fimMinuto.c_str()); //Mesma convers√£o e transforma√ß√£o para as horas e minutos de fim.
     //Fim do sistema de verificar se a festa tem no m·ximo 4 horas de duraÁ„o
 
-    if((somaFim-somaInicio)<=240) //Se a difernÁa de minutos do inÌcio da festa, para o final, for menor que 240min(4 horas), festa aceita.
+    if((somaFim-somaInicio)<=240) //Se a diferenÁa de minutos do inÌcio da festa, para o final, for menor que 240min(4 horas), festa aceita.
     {
         return 1;
     }
-    else //Festa n„o aceita, ultrapassou limite de 4 horas.
+    else //Festa n√£o aceita, ultrapassou limite de 4 horas.
     {
         return 0;
     }
@@ -247,16 +258,16 @@ string salvarHoraInicioSabado()
 
     DateHelper tm;
     cout << "Digite o hor·rio do inicio: ";
-    hora = tm.inputTime(); //Equivale ao cin da hora de fim, chamando a funÁ„o para verificar se È v·lido
+    hora = tm.inputTime(); //Equivale ao cin da hora de fim, chamando a funÁ„o para verificar se √© v√°lido
 
     int horaInicioInt = horaInicioInt=atoi(hora.c_str());
     if(horaInicioInt!=12 && horaInicioInt!=13 && horaInicioInt!=14 && horaInicioInt!=15 && horaInicioInt!=16)
     {
-        return hora;
+        return "Negado";
     }
     else
     {
-        return "Negado";
+        return hora;
     }
 }
 
@@ -266,16 +277,16 @@ string salvarHoraFimSabado()
 
     DateHelper tm;
     cout << "Digite o hor·rio do fim: ";
-    hora = tm.inputTime(); //Equivale ao cin da hora de fim, chamando a funÁ„o para verificar se È v·lido
+    hora = tm.inputTime(); //Equivale ao cin da hora de fim, chamando a funÁ„o para verificar se √© v√°lido
 
     int horaFimInt = horaFimInt=atoi(hora.c_str());
     if(horaFimInt!=12 && horaFimInt!=13 && horaFimInt!=14 && horaFimInt!=15 && horaFimInt!=16)
     {
-        return hora;
+        return "Negado";
     }
     else
     {
-        return "Negado";
+        return hora;
     }
 }
 
@@ -294,10 +305,10 @@ int verificarCoincidencia(string data, string horaInicio, string horaFim)
     string fimHora, fimMinuto;
 
     inicioHora = horaInicio.substr(0,2); //Salvar a hora de inicio
-    inicioMinuto = horaInicio.substr(3,2); //E salvar os minutos que inicia tambÈm
+    inicioMinuto = horaInicio.substr(3,2); //E salvar os minutos que inicia tamb√©m
 
     fimHora = horaFim.substr(0,2); //Salvar a hora de fim
-    fimMinuto = horaFim.substr(3,2);//E salvar os minutos que finaliza tambÈm
+    fimMinuto = horaFim.substr(3,2);//E salvar os minutos que finaliza tamb√©m
 
     int inicioEmMinutosEscrito = atoi(inicioHora.c_str())*60 + atoi(inicioMinuto.c_str());
     int fimEmMinutosEscrito = atoi(fimHora.c_str())*60 + atoi(fimMinuto.c_str());
