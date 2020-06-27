@@ -11,62 +11,16 @@
 #include "helpers/ModelHelper.h"
 using namespace std;
 
-int funcaoContrato()
+int funcaoContrato(FestaClass festa)
 {
 
     ContratoClass contrato;
-    FestaClass festa;
     int prossiga=0; //variavel de controle
     char confirmar;
 
     cout << "\n>>> GERAR CONTRATO <<<\n";
 
-
-    do  //pede um codigo de festa ate encontrar um que existe e que o usuario confirme seus dados
-    {
-        cout << "Codigo da festa que deseja gerar contrato (digite 0 para cancelar operação): ";
-        cin >> contrato.codigo_festa;
-        if (cin.fail()) //se for detectado erro na leitura
-        {
-            cin.clear(); // limpa flag de erro
-            cout << "~ ERRO : ENTRADA NÃO NUMÉRICA DIGITADA ~" << endl;
-        }
-        else {
-        if (contrato.codigo_festa==0)
-        {
-            cout << "\n\n!!!-- Operação Cancelada --!!!\n\n";
-            return 0;
-        }
-
-        festa = festa.get(contrato.codigo_festa);
-
-        if (festa.codigo!=contrato.codigo_festa)    //
-            cout << "!!!Codigo de festa nao registrado!!!\n";
-        else    //Confirma dados da festa para prosseguir com cadastro de contrato
-        {
-            cout << "\nConfirmacao dos dados da festa:" << endl;
-            printf("Código: %d\n", festa.codigo);
-            cout << "Código do Cliente:  "<< festa.codigo_cliente << endl;
-            cout << "Data: " << festa.dt << endl;
-            cout << "Dia da Semana: " << festa.diaSemana << endl;
-            cout << "Horário: " << festa.hora_inicio <<" - "<< festa.hora_fim << endl;
-            printf("Quantidade de convidados: %d\n", festa.qtdConvidados);
-            cout << "Tema: " << festa.tema << endl;
-
-            printf("\n---> Confirmar dados <---");
-            printf("\nC - Para confirmar");
-            printf("\nR - Para buscar outra festa");
-            printf("\nOs dados inseridos estão corretos? ");
-            cin.ignore(0xFFFF, '\n'); //ignora o lixo gerado no cin
-            cin >> confirmar;
-            if (toupper(confirmar)=='C')
-                prossiga=1;
-        }
-        }
-        cin.ignore(0xFFFF, '\n'); //ignora o lixo gerado no cin
-
-
-    }while (!prossiga); //repete até encontrar codigo de festa que existe
+    contrato.codigo_festa = festa.codigo;
 
     do {
 

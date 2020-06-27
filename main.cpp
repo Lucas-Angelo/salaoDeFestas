@@ -14,8 +14,6 @@ using namespace std;
 #include "funcaoRelatorio.h"
 #include "funcaoContrato.h"
 
-
-
 using namespace std;
 void printArt();
 
@@ -95,7 +93,7 @@ void printArt() {
   cout << "  / )  .-.    ___          __   (   )" << endl;
   cout << " ( (  (   ) .'___)        (__'-._) (" << endl;
   cout << "  \\ '._) (,'.'               '.     '-." << endl;
-  cout << "   '.      /  \"\\               '    -. '." << endl;
+  cout << "   '.      / ( \\               '    -. '." << endl;
   cout << "     )    /   \\ \\   .-.   ,'.   )  (  ',_)    _" << endl;
   cout << "   .'    (     \\ \\ (   \\ . .' .'    )    .-. ( \\ " << endl;
   cout << "  (  .''. '.    \\ \\|  .' .' ,',--, /    (   ) ) )" << endl;

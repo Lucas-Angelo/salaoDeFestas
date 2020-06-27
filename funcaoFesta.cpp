@@ -8,7 +8,7 @@ using namespace std;
 #include "FestaClass.h"
 #include "ClienteClass.h"
 #include "helpers/DateHelper.h"
-
+#include "funcaoContrato.h"
 #include "munit.h"
 #include <vector>
 
@@ -25,6 +25,7 @@ string salvarHoraFimSabado();
 string salvarTema();
 int verificarCoincidencia(string data, string horaInicio, string horaFim);
 
+
 int funcaoFesta()
 {
     setlocale(LC_ALL,"portuguese"); //Adicionar caracteres especiais
@@ -33,11 +34,8 @@ int funcaoFesta()
     festa.codigo_cliente = receberCodigoCliente();
 
     if(festa.codigo_cliente == 0) //Se o usuário desistiu de cadastrar a festa.
-    {
         cout << "\nSaindo do cadastro de festas..." << endl;
-    }
-    else // Caso o código tenha sido encontado, continuar cadastro de festa
-    {
+    else  {// Caso o código tenha sido encontado, continuar cadastro de festa
         char confirmar;
         cout << "\n>>> CADASTRAR FESTA <<<" << endl;
 
@@ -47,9 +45,7 @@ int funcaoFesta()
             festa.qtdConvidados = salvarConvid();
 
             if(festa.diaSemana!=7)
-            do
-            {
-
+            do {
                 festa.dt = salvarData();
                 festa.diaSemana = salvarDia(festa.dt);
 
@@ -103,8 +99,8 @@ int funcaoFesta()
             cout << "Os dados inseridos est�o corretos? ";
             cin >> confirmar;
         } while (toupper(confirmar)!='C');
-
         festa.save();
+        funcaoContrato(festa);
 
     }
 
