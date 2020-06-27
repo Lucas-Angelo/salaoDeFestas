@@ -90,10 +90,13 @@ unsigned int codigoFesta(string nome)
                     cout << "Hora de inicio: " << f.hora_inicio << endl;
                     cout << "Hora de termino: " <<  f.hora_fim  << endl;
                     cout << "-------------------------------------------------------------" << endl;
-               i++;
+                    i++;
                 }
-                if(i == 0) cout << "------------------------\nNenhum item encontrado\n------------------------";
             }
+             if(i == 0)
+                {
+                cout << "------------------------\nNenhum item encontrado1\n------------------------";
+                }
     return f.codigo;
 }
 
@@ -130,8 +133,11 @@ unsigned int codigoData(string data)
                     cout << "-------------------------------------------------------------" << endl;
                     i++;
                 }
-                if(i == 0) cout << "------------------------\nNenhum item encontrado\n------------------------";
             }
+                if(i == 0)
+                {
+                cout << "------------------------\nNenhum item encontrado\n------------------------";
+                }
     return f.codigo;
 }
 

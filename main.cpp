@@ -26,7 +26,7 @@ int main() {
   while (op != 5)
     {
     cout << "\n---------------->MENU DE OPCOES<----------------" << endl;
-    cout << "\n1-Cadastrar\n2-Pesquisar\n3-Atualizar contrato\n4-Relatórios\n5-Sair\nDigite uma opcao: ";
+    cout << "\n1-Cadastrar\n2-Pesquisar\n3-Atualizar contrato\n4-Relatorios\n5-Sair\nDigite uma opcao: ";
     cin >> op;
     cad = 0;
     if (op == 1)
