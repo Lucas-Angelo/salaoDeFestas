@@ -26,7 +26,12 @@ int funcaoContrato()
     {
         cout << "Codigo da festa que deseja gerar contrato (digite 0 para cancelar operação): ";
         cin >> contrato.codigo_festa;
-
+        if (cin.fail()) //se for detectado erro na leitura
+        {
+            cin.clear(); // limpa flag de erro
+            cout << "~ ERRO : ENTRADA NÃO NUMÉRICA DIGITADA ~" << endl;
+        }
+        else {
         if (contrato.codigo_festa==0)
         {
             cout << "\n\n!!!-- Operação Cancelada --!!!\n\n";
@@ -52,42 +57,20 @@ int funcaoContrato()
             printf("\nC - Para confirmar");
             printf("\nR - Para buscar outra festa");
             printf("\nOs dados inseridos estão corretos? ");
+            cin.ignore(0xFFFF, '\n'); //ignora o lixo gerado no cin
             cin >> confirmar;
             if (toupper(confirmar)=='C')
                 prossiga=1;
         }
+        }
+        cin.ignore(0xFFFF, '\n'); //ignora o lixo gerado no cin
 
 
     }while (!prossiga); //repete até encontrar codigo de festa que existe
 
     do {
 
-        if (festa.diaSemana>=2&&festa.diaSemana<=5)//valores a pagar para dia da semana
-        {
-            if (festa.qtdConvidados<=30)
-                contrato.valor_total=1899;
-            else if (festa.qtdConvidados<=50)
-                contrato.valor_total=2199;
-            else if (festa.qtdConvidados<=80)
-                contrato.valor_total=3199;
-            else if (festa.qtdConvidados<=100)
-                contrato.valor_total=3799;
-            else
-                cout << "Festa ultrapassa capacidade maxima do salao";
-        }
-        else //finais de semana
-        {
-            if (festa.qtdConvidados<=30)
-                contrato.valor_total=2099;
-            else if (festa.qtdConvidados<=50)
-                contrato.valor_total=2299;
-            else if (festa.qtdConvidados<=80)
-                contrato.valor_total=3499;
-            else if (festa.qtdConvidados<=100)
-                contrato.valor_total=3999;
-            else
-                cout << "Festa ultrapassa capacidade maxima do salao";
-        }
+        contrato.valor_total = CalculaValorTotal(festa.diaSemana, festa.qtdConvidados);
         cout << "Valor da festa: " << contrato.valor_total;
         cout << "\nVoce pode ganhar descontos pela forma de pagamento de acordo com a tabela abaixo:\n";
         cout << " __________________\n"  ;
@@ -105,25 +88,11 @@ int funcaoContrato()
             cin  >> contrato.formaPagamento;
             if (contrato.formaPagamento<'1'||contrato.formaPagamento>'9')
                 cout << "INVALIDO (formas de pagamento validas : 1 a 9 vezes)";
+            cin.ignore(0xFFFF,'\n');
         }while (contrato.formaPagamento<'1'||contrato.formaPagamento>'9');
 
-
-        switch (contrato.formaPagamento) //calculo do novo valor a pagar
-        {
-        case '1':
-            contrato.desconto=contrato.valor_total*10/100.0;
-            break;
-        case '2':
-            contrato.desconto=contrato.valor_total*5/100.0;
-            break;
-        case '3':
-            contrato.desconto=contrato.valor_total*2/100.0;
-            break;
-        default:
-            contrato.desconto=0;
-            break;
-        }
-        contrato.valor_final=contrato.valor_total-contrato.desconto;
+        contrato.desconto = CalculaDesconto(contrato.valor_total, contrato.formaPagamento);
+        contrato.valor_final = contrato.valor_total - contrato.desconto;
 
 
         contrato.status='A'; //status = "a pagar"
@@ -142,10 +111,54 @@ int funcaoContrato()
         printf("\nR - Para refazer");
         printf("\nOs dados estão corretos? ");
         cin >> confirmar;
+        cin.ignore(0xFFFF,'\n');
     } while (toupper(confirmar)!='C');
     contrato.save();
     return 0;
 }
+
+float CalculaValorTotal(int dia, int convidados)
+{
+    if (dia>=2&&dia<=5)//valores a pagar para dia da semana
+        {
+            if (convidados<=30)
+                return 1899;
+            else if (convidados<=50)
+                return 2199;
+            else if (convidados<=80)
+                return 3199;
+            else if (convidados<=100)
+                return 3799;
+        }
+        else //finais de semana
+        {
+            if (convidados<=30)
+                return 2099;
+            else if (convidados<=50)
+                return 2299;
+            else if (convidados<=80)
+                return 3499;
+            else if (convidados<=100)
+                return 3999;
+        }
+        return 0;
+}
+float CalculaDesconto(float valor, char pagamento)
+{
+    switch (pagamento) //calculo do desconto
+    {
+    case '1':
+        return valor*10/100;   //10% de desconto
+    case '2':
+        return valor*5/100;    //5% de desconto
+    case '3':
+        return valor*2/100;    //2% de desconto
+    default:
+        return 0;              //sem desconto
+    }
+    return 0;
+}
+
 int atualizaContrato()
 {
     ContratoClass contrato;
@@ -160,7 +173,12 @@ int atualizaContrato()
     {
         cout << "Codigo do contrato que deseja atualizar (digite 0 para cancelar operação): ";
         cin >> contrato.codigo;
-
+        if (cin.fail()) //se for detectado erro na leitura
+        {
+            cin.clear(); // limpa flag de erro
+            cout << "~ ERRO : ENTRADA NÃO NUMÉRICA DIGITADA ~" << endl;
+        }
+        else {
         if (contrato.codigo==0)
         {
             cout << "\n\n!!!-- Operação Cancelada --!!!\n\n";
@@ -187,11 +205,13 @@ int atualizaContrato()
             printf("\n---> Confirmar dados <---");
             printf("\nC - Para confirmar");
             printf("\nR - Para buscar outro contrato");
-            printf("\nOs dados inseridos estão corretos? ");
+            printf("\nOs dados estão corretos? ");
             cin >> confirmar;
             if (toupper(confirmar)=='C')
                 prossiga=1;
         }
+        }
+        cin.ignore(0xFFFF, '\n');
 
     }while (!prossiga); //repete até encontrar codigo de contrato que existe
 
@@ -200,6 +220,7 @@ int atualizaContrato()
     {
         cout << "\nAtualizar o contrato para pago ('p') ou para cancelado ('c'): ";
         cin >> contrato.status;
+        cin.ignore(0xFFFF,'\n');
         contrato.status = toupper(contrato.status);
         if (contrato.status!='P'&&contrato.status!='C')
             cout << "!!!Invalido!!!\n";
@@ -244,7 +265,7 @@ int atualizaContrato()
 
     cout << "\n\n---- Contrato " << contrato.codigo << " Atualizado ----\n\n";
 
-
+    return 0;
 
 }
 
