@@ -168,7 +168,7 @@ int salvarConvid() //Função para receber a quantidade de convidados
             cout << "Números negativos ou nulos são inválidos!" << endl;
             cout << "Digite uma quantidade válida: ";
         }
-        if(qtd < 100)
+        if(qtd > 100)
         {
             cout << "O máximo de convidados são 100." << endl;
             cout << "Digite uma quantidade válida: ";
