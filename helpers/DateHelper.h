@@ -14,8 +14,10 @@ class DateHelper
     public:
         DateHelper();
         string inputDate(){
-            int day, month, year, is_leap = 0, is_valid = 1;
+            int day=1, month=1, year=1000, is_leap = 0, is_valid = 1;
             do {
+                cin.seekg(0,ios::end);
+                cin.clear();
                 is_valid = 1;
                 cin >> day;
                 // Validando se o inicio da data (o dia) possui / no final
@@ -37,7 +39,7 @@ class DateHelper
                if(month < 0 || month > 12)
                     is_valid = 0;
                 else {
-                    // Validar se o dia é válido baseado no mes, e no ano caso bissexto.
+                    // Validar se o dia Ã© vÃ¡lido baseado no mes, e no ano caso bissexto.
                     if (month == 2) {
                         if (is_leap && day == 29)
                             is_valid = 1;
@@ -49,8 +51,10 @@ class DateHelper
                     } else if(day > 31  || day < 1)
                         is_valid = 0;
                 }
-                if(is_valid == 0)
-                    cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl << "Digite a hora: ";
+                if(is_valid == 0) {
+                     cout << "Data Invalida! Digite no formato dd/mm/yyyy" << endl << "Digite a data: ";
+                }
+
             } while(is_valid == 0);
 
             stringstream ss, ss2, ss3;
@@ -61,12 +65,15 @@ class DateHelper
             ss2>>sm;
             ss3<<year;
             ss3>>sy;
-
+            if(sm.length() == 1) sm = '0' + sm;
+            if(sd.length() == 1) sd = '0' + sd;
             return sd + "/" + sm + "/" + sy;
         }
         string inputTime(){
             int hour, minute, valid;
             do {
+                cin.seekg(0,ios::end);
+                cin.clear();
                 valid = 1;
                 cin >> hour;
                 if (cin.get() != ':')
@@ -86,8 +93,6 @@ class DateHelper
             ss1>>sh;
             ss2<<minute;
             ss2>>sm;
-
-
             return sh + ":" + sm;
         }
 

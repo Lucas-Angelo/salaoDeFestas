@@ -14,7 +14,6 @@ using namespace std;
 #include "helpers/ModelHelper.h"
 #include "FornecedorClass.h"
 
-unsigned int geraCodigo();
 string salvaNome();
 string salvaTelefone();
 string salvaProduto();
@@ -27,17 +26,12 @@ int funcaoFornecedor(){
     FornecedorClass fornecedor; //Orientar a objeto por meio da classe
 
     char confirmar;
-    cout << "\n>>> CADASTRAR FORNECEDOR <<<" << endl;
+    cout << "\n--->CADASTRO DE FORNECEDOR<---" << endl;
 
-    do
-    {
-
-        fornecedor.codigo = geraCodigo(); //Capturar código aleatório gerado.
+    do {
 
         fornecedor.nome = salvaNome(); //Receber nome digitado.
-
         fornecedor.telefone = salvaTelefone(); //Receber telefone digitado.
-
         fornecedor.produto = salvaProduto(); //Receber função do fornecedor digitada.
 
         cout << "\nDados do fornecedor:" << endl;
@@ -60,19 +54,10 @@ int funcaoFornecedor(){
 return 0;
 }
 
-
-unsigned int geraCodigo() //Função para gerar o código aleatório
-{
-    srand((unsigned int)time(NULL)); //Só deve ser chamada uma única vez, para configurar o gerador de código aleatório(rand), baseado no time.
-    unsigned int codigo;
-    codigo = rand(); //Salvar o código usando rand, com as configurações do srand.
-    return codigo;
-}
-
 string salvaNome() //Função para pegar o nome.
 {
     string nome;
-    cout << "Digite o nome? ";
+    cout << "\nDigite o nome: ";
     getline(cin >> ws,nome); //Capturar string/linha(nome) do funcionário.
     return nome;
 }
@@ -95,8 +80,8 @@ string salvaTelefone() //Função para pegar o telefone do funcionário.
         }
         if(verificador<10)
         {
-            cout << "Número de telefone inválido! [Mínimo de 10 números (DDD + número)]" << endl;
-            cout << "Digite um telefone válido: ";
+            cout << "Numero de telefone invalido! [Minimo de 10 numeros (DDD + numero)]" << endl;
+            cout << "Digite um telefone valido: ";
         }
     } while (verificador<10); //Se tiver no mínimo 10 numerais, conclui.
     return telefone;

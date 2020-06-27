@@ -48,12 +48,16 @@
 		<Unit filename="FuncionariosClass.h" />
 		<Unit filename="funcaoCliente.cpp" />
 		<Unit filename="funcaoCliente.h" />
+		<Unit filename="funcaoContrato.cpp" />
+		<Unit filename="funcaoContrato.h" />
 		<Unit filename="funcaoFesta.cpp" />
 		<Unit filename="funcaoFesta.h" />
 		<Unit filename="funcaoFornecedor.cpp" />
 		<Unit filename="funcaoFornecedor.h" />
 		<Unit filename="funcaoFuncionarios.cpp" />
 		<Unit filename="funcaoFuncionarios.h" />
+		<Unit filename="funcaoRelatorio.cpp" />
+		<Unit filename="funcaoRelatorio.h" />
 		<Unit filename="helpers/DateHelper.cpp" />
 		<Unit filename="helpers/DateHelper.h" />
 		<Unit filename="helpers/ModelHelper.cpp" />
@@ -63,10 +67,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="munit.h" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
