@@ -17,19 +17,31 @@ class DateHelper
             int day=1, month=1, year=1000, is_leap = 0, is_valid = 1;
             do {
                 cin.seekg(0,ios::end);
+                cin.ignore(0xFFFF, '\n');
                 cin.clear();
                 is_valid = 1;
                 cin >> day;
+                if (cin.fail()) { //entra aqui se houver algum erro
+                    cin.ignore(0xFFFF, '\n');
+                    cin.clear();
+                }
                 // Validando se o inicio da data (o dia) possui / no final
                if (cin.get() != '/')
                     is_valid = 0;
-
                 cin >> month;
+                if (cin.fail()) { //entra aqui se houver algum erro
+                    cin.ignore(0xFFFF, '\n');
+                    cin.clear();
+                }
                  // Validando se o inicio da data (o mes) possui / no final
                 if (cin.get() != '/')
                     is_valid = 0;
 
                 cin >> year;
+                if (cin.fail()) { //entra aqui se houver algum erro
+                    cin.ignore(0xFFFF, '\n');
+                    cin.clear();
+                }
                if(year < 1000 || year > 9999)
                     is_valid = 0;
                 // Validar se o ano for bissexo
@@ -93,6 +105,10 @@ class DateHelper
             ss1>>sh;
             ss2<<minute;
             ss2>>sm;
+            if(hour < 10) sh = '0' + sh;
+            if(minute < 10) sm = '0'  + sm;
+            if(minute % 10 == 0) sm = sm + '0';
+            if(hour % 10 == 0) hour = hour + '0';
             return sh + ":" + sm;
         }
 

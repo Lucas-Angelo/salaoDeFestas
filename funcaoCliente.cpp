@@ -90,6 +90,11 @@ unsigned long salvarTelefones() {
         cin.clear();
         cout << "Digite o telefone: ";
         cin >> telefone;
+        if (cin.fail()) { //entra aqui se houver algum erro
+            cin.ignore(0xFFFF, '\n');
+            cin.clear();
+            cout << "~ ERRO : ENTRADA INVÁLIDA ~" << endl;
+        }
     } while(telefone < 1000000000 || telefone > 9999999999 );
     return telefone;
 }
