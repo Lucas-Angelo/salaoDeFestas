@@ -122,6 +122,7 @@ void procuraFornecedor() {
           cout << "Telefone: " << f.telefone << endl;
           cout << "Produto: " << f.produto << endl;
           cout << "-------------------------------------------------------------" << endl;
+          i++;
         }
     }
     if(i == 0) cout << "------------------------\nNenhum item encontrado\n------------------------";

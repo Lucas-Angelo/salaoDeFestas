@@ -167,6 +167,7 @@ void procuraFuncionario() {
           cout << "Salário: " << f.salario << endl;
           cout << "Tipo: " << f.tipo << endl;
           cout << "-------------------------------------------------------------" << endl;
+          i++;
         }
     }
     if(i == 0) cout << "------------------------\nNenhum item encontrado\n------------------------";
