@@ -30,7 +30,7 @@ int funcaoRelatorio()
 
     if(op==1)
     {
-        cout << "\n------------>POR CLIENTE<------------" << endl;
+        cout << "\n------------>FESTAS POR CLIENTE<------------" << endl;
         string nome;
         cout << "Digite o nome do Cliente: ";
         getline(cin >> ws, nome);
@@ -40,7 +40,7 @@ int funcaoRelatorio()
     {
         ClienteClass c;
         FestaClass f;
-        cout << "\n------------>POR DATA<------------" << endl;
+        cout << "\n------------>FESTAS POR DATA<------------" << endl;
         string data;
         cout << "Digite a Data(dd/mm/AAAA): ";
         getline(cin >> ws, data);
